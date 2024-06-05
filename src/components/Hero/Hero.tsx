@@ -1,9 +1,9 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import Starfield from 'react-starfield';
-import "@/components/ui/Hero.css";
+import "@/components/Hero/Hero.css";
 import Link from 'next/link';
 import { CiMail } from 'react-icons/ci';
-import { Button } from './button';
+import { Button } from '../ui/button';
 import Image from 'next/image';
 
 const Hero: React.FC = () => {
