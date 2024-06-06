@@ -44,13 +44,13 @@ export default function TechStack() {
       Icon: SiMongodb
     },
 
-  ]
+  ];
 
   return (
     <div className="max-w-5xl mx-auto px-8">
-      <div className="text-3xl font-bold flex flex-col items-center justify-center">Skills</div>
+      <div className="text-5xl font-bold flex flex-col items-center justify-center pt-24">SKILLS</div>
       <HoverEffect items={tech} />
-      <div className="text-3xl font-semibold flex flex-col items-center justify-center -mt-4"> & more</div>
+      <div className="text-3xl font-semibold flex flex-col items-center justify-center -mt-10 mb-24"> & more</div>
     </div>
   )
 }

@@ -5,6 +5,19 @@ import Link from 'next/link';
 import { CiMail } from 'react-icons/ci';
 import { Button } from '../ui/button';
 import Image from 'next/image';
+import { Montserrat, Noto_Sans } from 'next/font/google';
+
+const noto = Noto_Sans({
+  subsets: ["latin"],
+  weight: "700",
+});
+
+const mont = Montserrat({
+  subsets: ["latin"],
+  weight: "300",
+})
+
+
 
 const Hero: React.FC = () => {
   return (
@@ -15,27 +28,27 @@ const Hero: React.FC = () => {
         speedFactor={0.15}
       />
       <div className='absolute inset-0 bg-black opacity-50'></div>
-      <div className='relative z-10 flex flex-col items-center justify-center h-full text-white'>
-        <div className="flex items-center">
-          <div className='flex flex-col items-center text-center'>
-            <h1 className='text-5xl font-bold'>Dominion <br />Gbadamosi</h1>
-            <p className='mt-4 text-m'>Based in Ireland, <br />
-              I'm a Software Engineer passionate about <br />
-              the pursuit of creativity through code.</p>
-            <Link href={"mailto:"}>
-              <Button className="mt-4 flex items-center w-48 h-12 btn-custom">
-                <CiMail className="mr-2 h-8 w-6" />Contact
-              </Button>
-            </Link>
-          </div>
-          <div className="ml-8 w-72 h-72">
+      <div className='relative z-10 flex flex-col items-center justify-center h-full text-white px-4'>
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-52 h-52 md:w-72 md:h-72">
             <Image
               src="/assets/images/personal-photo.jpg"
               width={300}
               height={300}
               alt="portfolio main image"
-              className='object-none w-72 h-72 rounded-full custom-position'
+              className='object-none w-48 h-48 md:w-72 md:h-72 rounded-full custom-position'
             />
+          </div>
+          <div className='order-2 md:order-1 flex flex-col items-center text-center md:text-left'>
+            <h1 style={noto.style} className='text-4xl md:text-7xl font-bold'>Dominion <br />Gbadamosi</h1>
+            <p style={mont.style} className='mt-4 text-sm md:text-base text-center'>Based in Ireland, <br />
+              I'm a Software Engineer passionate about <br />
+              the pursuit of creativity through code.</p>
+            <Link href={"mailto:"}>
+              <Button style={noto.style} className="mt-4 flex items-center w-40 md:w-48 h-10 md:h-12 btn-custom">
+                <CiMail className="mr-2 h-6 md:h-8 w-4 md:w-6" />Contact
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
