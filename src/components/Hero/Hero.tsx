@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import Starfield from 'react-starfield';
 import "@/components/Hero/Hero.css";
 import Link from 'next/link';
@@ -6,6 +7,7 @@ import { CiMail } from 'react-icons/ci';
 import { Button } from '../ui/button';
 import Image from 'next/image';
 import { Montserrat, Noto_Sans } from 'next/font/google';
+import Typewriter from 'typewriter-effect/dist/core';
 
 const noto = Noto_Sans({
   subsets: ["latin"],
@@ -17,9 +19,21 @@ const mont = Montserrat({
   weight: "300",
 })
 
-
-
 const Hero: React.FC = () => {
+  useEffect(() => {
+    const typewriter = new Typewriter('.typewriter', {
+      loop: true,
+      delay: 75,
+    });
+
+    typewriter.typeString('Dominion')
+      .pauseFor(1000)
+      .deleteAll()
+      .typeString('Dom')
+      .pauseFor(1000)
+      .start();
+  }, []);
+
   return (
     <div className='relative h-screen'>
       <Starfield
@@ -36,12 +50,13 @@ const Hero: React.FC = () => {
               width={300}
               height={300}
               alt="portfolio main image"
-              className='object-none w-48 h-48 md:w-72 md:h-72 rounded-full custom-position'
+              className='object-none w-48 h-48 md:w-72 md:h-72 rounded-full custom-position hover:scale-105'
             />
           </div>
           <div className='order-2 md:order-1 flex flex-col items-center text-center md:text-left'>
-            <h1 style={noto.style} className='text-4xl md:text-7xl font-bold'>Dominion <br />Gbadamosi</h1>
-            <p style={mont.style} className='mt-4 text-sm md:text-base text-center'>Based in Ireland, <br />
+            <h1 style={noto.style} className='text-4xl md:text-7xl font-bold typewriter'></h1>
+            <h1 style={noto.style} className="text-4xl md:text-7xl font-bold">Gbadamosi</h1>
+            <p style={mont.style} className='mt-4 text-sm md:text-base text-left'>Based in Ireland,
               I'm a Software Engineer passionate about <br />
               the pursuit of creativity through code.</p>
             <Link href={"mailto:"}>
@@ -57,3 +72,4 @@ const Hero: React.FC = () => {
 }
 
 export default Hero;
+
