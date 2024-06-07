@@ -2,6 +2,12 @@ import React from 'react'
 import { WobbleCard } from '../ui/wobble-card'
 import { SiGeneralmotors } from 'react-icons/si'
 import '@/components/Experience/Experience.css'
+import { Noto_Sans } from 'next/font/google'
+
+const noto = Noto_Sans({
+  subsets: ["latin"],
+  weight: "300"
+});
 
 export default function Experience() {
 
@@ -26,7 +32,7 @@ export default function Experience() {
 
     return (
         <div className="p-4 sm:p-10">
-           <div className="text-5xl font-bold flex flex-col items-center justify-center pt-12 glow-purple">EXPERIENCE</div>
+           <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-12 glow-purple">EXPERIENCE</div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-20">
             {experiences.map((experience, index) => (
               <WobbleCard key={index} containerClassName="p-4" className="bg-transparent text-white">

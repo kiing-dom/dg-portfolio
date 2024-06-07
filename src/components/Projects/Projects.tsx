@@ -4,6 +4,12 @@ import React from 'react'
 import { SiFirebase, SiJavascript, SiOpenai, SiReact } from 'react-icons/si'
 import { DirectionAwareHover } from '../ui/direction-aware-hover'
 import "@/components/Projects/Projects.css"
+import { Noto_Sans } from 'next/font/google'
+
+const noto = Noto_Sans({
+    subsets: ["latin"],
+    weight: "300"
+});
 
 export default function Projects() {
 
@@ -19,7 +25,7 @@ export default function Projects() {
 
     return (
         <div className="py-10 p-5 sm:p-0">
-            <div className="text-5xl font-bold flex flex-col items-center justify-center pt-24 glow-purple">PROJECTS</div>
+            <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-24 glow-purple">PROJECTS</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 pt-20 gap-4">
                 {projects.map((project, idx) => {
                     return <Link href={project.link} key={idx}>

@@ -17,15 +17,19 @@ const socials = [
 ];
 
 const noto = Noto_Sans({
-    subsets: ["latin"],
-    weight: "700",
-  });
+  subsets: ["latin"],
+  weight: "700",
+});
 
 export default function Navbar() {
   return (
     <nav className="bg-transparent text-white shadow-md py-4 px-6 fixed top-0 left-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-2xl font-bold underline underline-offset-8 decoration-purple-800 -rotate-2">🌟</h1>
+        <Link href="#hero">
+          <img src='/assets/images/purple-star.png' alt='' className='w-8 h-8 transition-transform duration-300 hover:rotate-12 hover:scale-125'>
+          </img>
+        </Link>
+
         <div className="flex items-center gap-8">
           <Link style={noto.style} href="#hero">
             About

@@ -3,6 +3,12 @@ import React from 'react'
 import { HoverEffect } from '../ui/card-hover-effect'
 import { SiGit, SiJavascript, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript, SiPython, SiMongodb } from 'react-icons/si'
 import '@/components/Skills/TechStack.css'
+import { Noto_Sans } from 'next/font/google';
+
+const noto = Noto_Sans({
+  subsets: ["latin"],
+  weight: "300"
+});
 
 export default function TechStack() {
 
@@ -49,7 +55,7 @@ export default function TechStack() {
 
   return (
     <div className="max-w-5xl mx-auto px-8">
-      <div className="text-5xl font-bold flex flex-col items-center justify-center pt-24 glow-purple">SKILLS</div>
+      <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-24 glow-purple">SKILLS</div>
       <HoverEffect items={tech} />
       <div className="text-3xl font-semibold flex flex-col items-center justify-center -mt-10 mb-24"> & more</div>
     </div>

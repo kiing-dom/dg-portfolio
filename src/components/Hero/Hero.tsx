@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
             />
           </div>
           <div className='order-2 md:order-1 flex flex-col items-center text-center md:text-left'>
-            <h1 style={noto.style} className='text-4xl md:text-7xl font-bold typewriter'></h1>
+            <div style={noto.style} className='text-4xl md:text-7xl font-bold typewriter'></div>
             <h1 style={noto.style} className="text-4xl md:text-7xl font-bold">Gbadamosi</h1>
             <p style={mont.style} className='mt-4 text-sm md:text-base text-left'>Based in Ireland,
               I'm a Software Engineer passionate about <br />
