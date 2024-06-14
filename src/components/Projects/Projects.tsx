@@ -1,7 +1,7 @@
 import { cn } from '@/utils/cn'
 import Link from 'next/link'
 import React from 'react'
-import { SiFirebase, SiJavascript, SiOpenai, SiReact } from 'react-icons/si'
+import { SiFirebase, SiJavascript, SiOpenai, SiReact, SiHtml5, SiTailwindcss, SiGooglechrome } from 'react-icons/si'
 import { DirectionAwareHover } from '../ui/direction-aware-hover'
 import "@/components/Projects/Projects.css"
 import { Noto_Sans } from 'next/font/google'
@@ -20,13 +20,21 @@ export default function Projects() {
             link: "https://github.com/kiing-dom/boxing-nutrition-tracker-fyp",
             cover: "/assets/images/fytesize.png",
             background: ""
-        }
+        },
+        {
+            title: "YouTility",
+            tech: [SiJavascript, SiHtml5, SiTailwindcss, SiGooglechrome],
+            link: "https://chromewebstore.google.com/detail/youtility/ghhfnphagokpndddeccmkbbinnhdhalc",
+            cover: "/assets/images/youtility.png",
+            background: ""
+        },
+        
     ]
 
     return (
         <div className="py-10 p-5 sm:p-0">
             <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-24 glow-purple">PROJECTS</div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 pt-20 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 pt-20 gap-8">
                 {projects.map((project, idx) => {
                     return <Link href={project.link} key={idx}>
                         <div className={cn("p-5 rounded-md", project.background)}>
