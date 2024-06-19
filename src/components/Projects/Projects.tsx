@@ -1,10 +1,10 @@
-import { cn } from '@/utils/cn'
-import Link from 'next/link'
-import React from 'react'
-import { SiFirebase, SiJavascript, SiOpenai, SiReact, SiHtml5, SiTailwindcss, SiGooglechrome } from 'react-icons/si'
-import { DirectionAwareHover } from '../ui/direction-aware-hover'
-import "@/components/Projects/Projects.css"
-import { Noto_Sans } from 'next/font/google'
+import { cn } from '@/utils/cn';
+import Link from 'next/link';
+import React from 'react';
+import { SiFirebase, SiJavascript, SiOpenai, SiReact, SiHtml5, SiTailwindcss, SiGooglechrome } from 'react-icons/si';
+import { DirectionAwareHover } from '../ui/direction-aware-hover';
+import "@/components/Projects/Projects.css";
+import { Noto_Sans } from 'next/font/google';
 
 const noto = Noto_Sans({
     subsets: ["latin"],
@@ -36,23 +36,26 @@ export default function Projects() {
             <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-24 glow-purple">PROJECTS</div>
             <div className="grid grid-cols-1 sm:grid-cols-3 pt-20 gap-8">
                 {projects.map((project, idx) => {
-                    return <Link href={project.link} key={idx}>
-                        <div className={cn("p-5 rounded-md", project.background)}>
-                            <DirectionAwareHover imageUrl={project.cover} className='w-full space-y-5 cursor-pointer '>
-                                <div className='space-y-5'>
-                                    <h1>{project.title}</h1>
-                                    <div className="flex items-center gap-5">
-                                        {project.tech.map((Icon, idx) => {
-                                            return <Icon className="w-8 h-8" key={idx} />
-                                        })}
-                                    </div>
+                    return (
+                        <Link href={project.link} key={idx} passHref legacyBehavior>
+                            <a target="_blank" rel="noopener noreferrer">
+                                <div className={cn("p-5 rounded-md", project.background)}>
+                                    <DirectionAwareHover imageUrl={project.cover} className='w-full space-y-5 cursor-pointer '>
+                                        <div className='space-y-5'>
+                                            <h1>{project.title}</h1>
+                                            <div className="flex items-center gap-5">
+                                                {project.tech.map((Icon, idx) => {
+                                                    return <Icon className="w-8 h-8" key={idx} />
+                                                })}
+                                            </div>
+                                        </div>
+                                    </DirectionAwareHover>
                                 </div>
-
-                            </DirectionAwareHover>
-                        </div>
-                    </Link>
+                            </a>
+                        </Link>
+                    );
                 })}
             </div>
         </div>
-    )
+    );
 }
