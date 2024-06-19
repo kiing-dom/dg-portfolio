@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             <div style={noto.style} className='text-4xl md:text-7xl font-bold typewriter'></div>
             <h1 style={noto.style} className="text-4xl md:text-7xl font-bold">Gbadamosi</h1>
             <p style={mont.style} className='mt-4 text-sm md:text-base text-left'>Based in Ireland,
-              I'm a Software Engineer passionate about <br />
+            I&rsquo;m a Software Engineer passionate about <br />
               the pursuit of creativity through code.</p>
             <Link href={"mailto:"}>
               <Button style={noto.style} className="mt-4 flex items-center w-40 md:w-48 h-10 md:h-12 btn-custom">
