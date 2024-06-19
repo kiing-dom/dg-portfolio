@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
             <p style={mont.style} className='mt-4 text-sm md:text-base text-left'>Based in Ireland,
             I&rsquo;m a Software Engineer passionate about <br />
               the pursuit of creativity through code.</p>
-            <Link href={"mailto:"}>
+            <Link href={"mailto:dom1gbadamosi@gmail.com"}>
               <Button style={noto.style} className="mt-4 flex items-center w-40 md:w-48 h-10 md:h-12 btn-custom">
                 <CiMail className="mr-2 h-6 md:h-8 w-4 md:w-6" />Contact
               </Button>
