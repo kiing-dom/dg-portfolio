@@ -23,8 +23,8 @@ export default function Experience() {
         {
             position: "Computer Science Student",
             company: "University of Limerick",
-            duration: "August 2020 - May 2024",
-            description:"",
+            duration: "September 2020 - May 2024",
+            description:"Throughout my university journey in Computer Science, I have cultivated a strong foundation in various key disciplines. From hands-on experience in software development and architecture to mastering data structures, algorithms, and statistical analysis, my academic path has equipped me with robust skills in data mining and artificial intelligence.",
             logo: "/assets/images/ul-logo.png",
             logoSize: '72px'
         }
@@ -33,9 +33,9 @@ export default function Experience() {
     return (
         <div className="p-4 sm:p-10">
            <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-12 glow-purple">EXPERIENCE</div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-20">
+          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 pt-20">
             {experiences.map((experience, index) => (
-              <WobbleCard key={index} containerClassName="p-4" className="bg-transparent text-white">
+              <WobbleCard key={index} containerClassName="p-4" className="bg-neutral-700 bg-opacity-40 text-white">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <div>
                     {typeof experience.logo === 'string' ? (

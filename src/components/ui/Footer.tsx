@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 const socials = [
   {
@@ -12,6 +12,10 @@ const socials = [
     link: "https://www.github.com/kiing-dom",
     label: "GitHub",
     Icon: FaGithub
+  }, {
+    link: "https://www.youtube.com/@1KIINGDOM",
+    label: "YouTube channel",
+    Icon: FaYoutube
   }
 ];
 
