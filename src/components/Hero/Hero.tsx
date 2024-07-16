@@ -1,9 +1,9 @@
 "use client"
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Starfield from 'react-starfield';
 import "@/components/Hero/Hero.css";
 import Link from 'next/link';
-import { CiMail } from 'react-icons/ci';
+import { CiMail, CiRead, CiSquareRemove } from 'react-icons/ci';
 import { Button } from '../ui/button';
 import Image from 'next/image';
 import { Montserrat, Noto_Sans } from 'next/font/google';
@@ -17,9 +17,12 @@ const noto = Noto_Sans({
 const mont = Montserrat({
   subsets: ["latin"],
   weight: "300",
-})
+});
 
 const Hero: React.FC = () => {
+  const [showOverlay, setShowOverlay] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const typewriter = new Typewriter('.typewriter', {
       loop: true,
@@ -32,7 +35,40 @@ const Hero: React.FC = () => {
       .typeString('Dom')
       .pauseFor(1000)
       .start();
+
+      const handleClickOutside = (event: MouseEvent) => {
+        if(overlayRef.current && !overlayRef.current.contains(event.target as Node)) {
+          closeOverlay();
+        }
+      };
+
+      const handleEscKey = (event: KeyboardEvent) => {
+        if(event.key === 'Escape') {
+          closeOverlay();
+        }
+      }
+        
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('keydown', handleEscKey);
+
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+          document.removeEventListener('keydown', handleEscKey);
+
+      };
   }, []);
+
+  
+
+  const toggleOverlay = () => {
+    setShowOverlay(!showOverlay)
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeOverlay = () => {
+    setShowOverlay(false);
+    document.body.style.overflow = "visible";
+  }
 
   return (
     <div className='relative h-screen'>
@@ -64,6 +100,30 @@ const Hero: React.FC = () => {
                 <CiMail className="mr-2 h-6 md:h-8 w-4 md:w-6" />Contact
               </Button>
             </Link>
+
+            <Button
+              onClick={toggleOverlay} 
+              style={noto.style} className="mt-4 flex items-center w-40 md:w-48 h-10 md:h-12 btn-custom bg-red-500">
+                <CiRead className="mr-2 h-6 md:h-8 w-4 md:w-6" /> View Resume
+            </Button>
+
+            {showOverlay && (
+              <div className='overlay fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center'>
+                <div ref={overlayRef} className='overlay-content rounded-md w-8/12 h-5/6 bg-purple-400 relative'>
+                  <div className='toolbar'>
+                    <span onClick={closeOverlay} className='close-button'>
+                      <CiSquareRemove className='hover:rotate-3 hover:scale-110 transition-transform duration-150 ml-3 mt-2' size={36} color='black' />
+                    </span>
+                    <div style={noto.style} className='-mt-6 text-center text-3xl text-black font-bold'>2024 RESUME</div>
+                    <iframe
+                      className="w-full h-[95%] absolute"
+                      src="/assets/documents/Dominion Gbadamosi.pdf"
+                      title="Resume"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -72,4 +132,3 @@ const Hero: React.FC = () => {
 }
 
 export default Hero;
-

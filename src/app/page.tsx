@@ -3,7 +3,7 @@ import Hero from "@/components/Hero/Hero";
 import Projects from "@/components/Projects/Projects";
 import TechStack from "@/components/Skills/TechStack";
 import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer"; // Import the Footer component
+import Footer from "@/components/ui/Footer"; 
 
 export default function Home() {
   return (
