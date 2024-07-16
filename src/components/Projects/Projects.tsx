@@ -26,7 +26,7 @@ export default function Projects() {
             title: "YouTility",
             tech: [SiJavascript, SiHtml5, SiTailwindcss, SiGooglechrome],
             description: "A Chrome extension created to enhance your YouTube experience with various utilities and features.",
-            link: "https://x-clone-rho.vercel.app/",
+            link: "https://chromewebstore.google.com/detail/youtility/ghhfnphagokpndddeccmkbbinnhdhalc",
             cover: "/assets/images/youtility.png",
             background: ""
         },
@@ -34,7 +34,7 @@ export default function Projects() {
             title: "Twitter/X Clone",
             tech: [SiTypescript, SiNextdotjs, SiTailwindcss, SiPrisma, SiMongodb, SiVercel],
             description: "A full-stack website mirroring the functionality of Twitter/X",
-            link: "https://chromewebstore.google.com/detail/youtility/ghhfnphagokpndddeccmkbbinnhdhalc",
+            link: "https://x-clone-rho.vercel.app/",
             cover: "/assets/images/twitter-x-clone.png",
             background: ""
         },
