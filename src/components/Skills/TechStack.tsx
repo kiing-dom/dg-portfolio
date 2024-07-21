@@ -1,7 +1,8 @@
 "use client";
 import React from 'react'
 import { HoverEffect } from '../ui/card-hover-effect'
-import { SiGit, SiJavascript, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript, SiPython, SiMongodb } from 'react-icons/si'
+import { SiGit, SiJavascript, SiNextdotjs, SiNodedotjs, SiReact, SiTailwindcss, SiTypescript, SiPython, SiMongodb} from 'react-icons/si'
+import { FaJava } from 'react-icons/fa6';
 import '@/components/Skills/TechStack.css'
 import { Noto_Sans, Montserrat } from 'next/font/google';
 
@@ -43,6 +44,10 @@ export default function TechStack() {
       text: "TypeScript",
       Icon: SiTypescript
     }, 
+    {
+      text:"Java",
+      Icon: FaJava
+    },
     {
       text: "Git",
       Icon: SiGit

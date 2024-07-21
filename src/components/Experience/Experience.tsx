@@ -33,9 +33,9 @@ export default function Experience() {
     return (
         <div className="p-4 sm:p-10">
            <div style={noto.style} className="text-5xl font-bold flex flex-col items-center justify-center pt-12 glow-purple">EXPERIENCE</div>
-          <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 pt-20">
+          <div className=" grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-6 pt-20">
             {experiences.map((experience, index) => (
-              <WobbleCard key={index} containerClassName="p-4" className="bg-neutral-700 bg-opacity-40 text-white">
+              <WobbleCard key={index} className="bg-neutral-700 bg-opacity-40 text-white h-[64px] sm:h-[100px] md:h-full lg:h-full flex items-center">
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                   <div>
                     {typeof experience.logo === 'string' ? (
@@ -50,7 +50,7 @@ export default function Experience() {
                     <h2 className="text-xl font-semibold">{experience.position}</h2>
                     <h3 className="text-lg">{experience.company}</h3>
                     <p className="text-sm text-yellow-300">{experience.duration}</p>
-                    <p>{experience.description}</p>
+                    <p className='hidden md:block lg:block'>{experience.description}</p>
                   </div>
                 </div>
               </WobbleCard>
