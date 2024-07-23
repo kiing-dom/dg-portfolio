@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 3.3 }}
-            className="hidden md:block lg:block order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-[800px] h-[350px] rounded-full overflow-hidden"
+            className="hidden md:block lg:block order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-[800px] h-[350px] lg:w-[800px] lg:[h-350] md:mr-32 md:w-[500px] md:h-[350px] rounded-full overflow-hidden"
           >
             <Image
               src="/assets/images/personal-photo.jpg"
