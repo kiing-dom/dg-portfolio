@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import Image from 'next/image';
 import { Montserrat, Noto_Sans, Lato } from 'next/font/google';
 import Typewriter from 'typewriter-effect/dist/core';
+import { motion } from 'framer-motion';
 
 const noto = Noto_Sans({
   subsets: ["latin"],
@@ -77,29 +78,53 @@ const Hero: React.FC = () => {
 
   return (
     <div className='relative h-screen'>
-      <Starfield
-        starCount={1000}
-        starColor={[134, 134, 189]}
-        speedFactor={0.15}
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        className='absolute inset-0'
+      >
+        <Starfield
+          starCount={1000}
+          starColor={[134, 134, 189]}
+          speedFactor={0.15}
+        />
+      </motion.div>
       <div className='absolute inset-0 bg-black opacity-50'></div>
       <div className='relative z-10 flex flex-col items-center justify-center h-full text-white px-4'>
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="hidden md:block lg:block order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-52 h-52 md:w-72 md:h-72">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, delay: 3 }}
+          className="flex flex-col lg:flex-row md:flex-row items-center"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 3.3 }}
+            className="hidden md:block lg:block order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-[800px] h-[350px] lg:w-[800px] lg:[h-350] md:mr-32 md:w-[500px] md:h-[350px] rounded-full overflow-hidden"
+          >
             <Image
               src="/assets/images/personal-photo.jpg"
               width={300}
               height={300}
-              alt="portfolio main image"
-              className='object-none w-48 h-48 md:w-72 md:h-72 rounded-full custom-position hover:scale-125 transition-transform'
+              alt="dominion gbadamosi portfolio main image"
+              className='object-cover w-full h-full transition-transform hover:scale-125'
             />
-          </div>
-          <div className='order-2 md:order-1 flex flex-col items-center text-center md:text-left'>
+          </motion.div>
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 3.8 }}
+            className='order-2 md:order-1 flex flex-col items-center text-center md:text-left'
+          >
             <div style={noto.style} className='text-4xl md:text-7xl font-bold typewriter'></div>
             <h1 style={noto.style} className="text-4xl md:text-7xl font-bold">Gbadamosi</h1>
             <div className='w-[70%]'>
               <p style={lato.style} className='mt-4 text-md md:text-lg text-center'>
                 I am a software engineer based in Ireland who recently graduated from the University of Limerick.
+                I have a deep interest in AI engineering and combining it with full stack development.
+                I am passionate about pursuing a career that will allow me to explore my interest in either or both of these fields.
               </p>
             </div>
             <Link href={"mailto:dom1gbadamosi@gmail.com"}>
@@ -131,8 +156,8 @@ const Hero: React.FC = () => {
                 </div>
               </div>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </div>
   );
