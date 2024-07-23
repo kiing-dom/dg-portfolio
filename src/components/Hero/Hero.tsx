@@ -96,20 +96,20 @@ const Hero: React.FC = () => {
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5, delay: 3 }}
-          className="flex flex-col md:flex-row items-center"
+          className="flex flex-col lg:flex-row md:flex-row items-center"
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 3.3 }}
-            className="hidden md:block lg:block order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-52 h-52 md:w-72 md:h-72"
+            className="hidden md:block lg:block order-1 md:order-2 mt-8 md:mt-0 md:ml-8 w-[800px] h-[350px] rounded-full overflow-hidden"
           >
             <Image
               src="/assets/images/personal-photo.jpg"
               width={300}
               height={300}
               alt="dominion gbadamosi portfolio main image"
-              className='object-none w-48 h-48 md:w-72 md:h-72 rounded-full custom-position hover:scale-125 transition-transform'
+              className='object-cover w-full h-full transition-transform hover:scale-125'
             />
           </motion.div>
           <motion.div
@@ -123,6 +123,8 @@ const Hero: React.FC = () => {
             <div className='w-[70%]'>
               <p style={lato.style} className='mt-4 text-md md:text-lg text-center'>
                 I am a software engineer based in Ireland who recently graduated from the University of Limerick.
+                I have a deep interest in AI engineering and combining it with full stack development.
+                I am passionate about pursuing a career that will allow me to explore my interest in either or both of these fields.
               </p>
             </div>
             <Link href={"mailto:dom1gbadamosi@gmail.com"}>
