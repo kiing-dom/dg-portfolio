@@ -149,7 +149,7 @@ const Hero: React.FC = () => {
                     <div style={noto.style} className='-mt-6 text-center text-3xl text-black font-bold'>2024 RESUME</div>
                     <iframe
                       className="w-full h-[95%] absolute"
-                      src="/assets/documents/Dominion Gbadamosi.pdf"
+                      src="/assets/documents/dominion resume.pdf"
                       title="Resume"
                     />
                   </div>
