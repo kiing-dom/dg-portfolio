@@ -7,7 +7,7 @@ import Footer from "@/components/ui/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-black">
+    <main className="bg-black overflow-x-hidden">
       <Navbar />
       <div className="max-w-7xl mx-auto p-5 -mt-16">
         <div id="hero">
