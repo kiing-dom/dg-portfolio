@@ -14,7 +14,7 @@ export default function Home() {
           <Hero />
         </div>
       </div>
-      <div className="max-w-7xl mx-auto -mt-16"></div>
+      <div className="max-w-7xl mx-auto -mt-32"></div>
       <div id="experience">
         <Experience />
       </div>

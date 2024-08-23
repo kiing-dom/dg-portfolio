@@ -48,8 +48,8 @@ export default function Projects() {
             title: "Educational Streaming Site",
             tech: [SiSpring, FaJava, SiReact, SiAmazonaws, ],
             description: "A full-stack streaming platform with Spring Boot for backend microservices and React for the frontend",
-            link: "https://x-clone-rho.vercel.app/",
-            cover: "/assets/images/twitter-x-clone.png",
+            link: "https://github.com/kiing-dom/streamingsite",
+            cover: "/assets/images/streamingsite.png",
         },
     ];
 

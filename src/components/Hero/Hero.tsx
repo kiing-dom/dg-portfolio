@@ -83,9 +83,9 @@ const Hero: React.FC = () => {
               className="object-cover w-full h-full transition-transform hover:scale-125"
             />
           </div>
-          <div className="order-2 md:order-1 flex flex-col items-center text-center md:text-left">
+          <div className="order-2 md:order-1 flex flex-col items-center text-left">
             <h1 style={nun_bold.style} className="text-xl md:text-5xl">
-              Hey, it's Dominion (Dom)
+              Hey, it's Dom!
             </h1>
             <div className="w-[70%]">
               <p style={nun.style} className="mt-4 text-md md:text-md text-left">
