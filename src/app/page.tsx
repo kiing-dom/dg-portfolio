@@ -14,15 +14,15 @@ export default function Home() {
           <Hero />
         </div>
       </div>
-      <div className="max-w-7xl mx-auto p-5"></div>
+      <div className="max-w-7xl mx-auto -mt-16"></div>
       <div id="experience">
         <Experience />
       </div>
-      <div className="max-w-7xl mx-auto p-5 pt-24 mt-72">
+      <div className="max-w-7xl mx-auto p-5 pt-24">
         <div id="projects">
           <Projects />
         </div>
-        <div className="max-w-7xl mx-auto p-5 mt-48"></div>
+        <div className="max-w-7xl mx-auto p-5"></div>
         <div id="techstack">
           <TechStack />
         </div>

@@ -35,7 +35,7 @@ export default function Footer() {
             );
           })}
         </div>
-        <p className="text-sm">&copy; Dominion Gbadamosi 2024 All rights reserved.</p>
+        <p className="text-sm">&copy; Dominion Gbadamosi {new Date().toLocaleDateString().substring(6)} All rights reserved.</p>
       </div>
     </footer>
   );
