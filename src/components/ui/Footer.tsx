@@ -21,7 +21,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-purple-900 bg-opacity-20 rounded-lg text-white py-6 mt-8">
+    <footer className="bg-[#d8d8ff] bg-opacity-50 rounded-lg text-white py-6 mt-8">
       <div className="container mx-auto flex flex-col items-center">
         <div className="flex items-center gap-4 mb-4">
           {socials.map((social, index) => {
