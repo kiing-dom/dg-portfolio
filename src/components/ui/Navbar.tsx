@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center">
         <Link href="#hero" passHref legacyBehavior>
           <a className="legacyBehavior pr-4">
-            <img src='/assets/images/purple-star.png' alt='' className='w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:rotate-12 hover:scale-125' />
+            <img src='icon.ico' alt='' className='w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:rotate-12 hover:scale-125 drop-shadow-md' />
           </a>
         </Link>
         
@@ -72,7 +72,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-white bg-opacity-20 rounded-lg shadow-lg">
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-[#d8d8ff] rounded-lg shadow-lg">
           <div className="flex flex-col items-center py-2">
             <Link href="#hero" passHref legacyBehavior>
               <a style={noto.style} className="text-sm py-2 hover:text-white transform transition-transform">About</a>
