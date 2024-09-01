@@ -26,7 +26,7 @@ const Experience = () => {
     {
       position: "Software Engineering Fellow",
       company: "Headstarter AI",
-      duration: "July 2024 - Current",
+      duration: "Jul 2024 - Sep 2024",
       description: "Developing five innovative AI-based applications, each with unique use cases and technical challenges. Deploying a final project, with the aim of reaching 1000 users. Participating in hackathons with cross-functional teams to prototype and pitch innovative solutions within tight deadlines.",
       logo:"/assets/images/headstarter.jpeg",
       logoSize: "128px"
