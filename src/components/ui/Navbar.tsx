@@ -31,7 +31,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center">
         <Link href="#hero" passHref legacyBehavior>
           <a className="legacyBehavior pr-4">
-            <img src='/assets/images/purple-star.png' alt='' className='w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:rotate-12 hover:scale-125' />
+            <img src='icon.ico' alt='' className='w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:rotate-12 hover:scale-125 drop-shadow-md' />
           </a>
         </Link>
         

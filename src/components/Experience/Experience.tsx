@@ -65,8 +65,8 @@ const Experience = () => {
             </div>
             <div className="w-4/5 p-3">
               <h3 style={nun_bold.style} className="text-lg font-bold text-white">{exp.position}</h3>
-              <h4 style={nun.style} className="text-sm text-gray-300">{exp.company} | {exp.duration}</h4>
-              <p style={noto.style} className="text-xs text-gray-300 mt-1">{exp.description}</p>
+              <h4 style={nun_bold.style} className="text-sm text-neutral-300">{exp.company} | {exp.duration}</h4>
+              <p style={noto.style} className="text-xs text-gray- mt-1">{exp.description}</p>
             </div>
           </div>
         ))}
