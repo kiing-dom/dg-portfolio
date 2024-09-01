@@ -105,14 +105,15 @@ const Hero: React.FC = () => {
 
       {showOverlay && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50">
-          <div ref={overlayRef} className="bg-purple-400 rounded-md w-11/12 h-5/6 max-w-4xl max-h-[90vh] relative">
+          <div ref={overlayRef} className="bg-[#d8d8ff] rounded-md w-11/12 h-5/6 max-w-4xl max-h-[90vh] relative">
             <div className="absolute top-2 left-2">
               <span onClick={closeOverlay} className="cursor-pointer">
                 <CiSquareRemove className="hover:rotate-3 hover:scale-110 transition-transform duration-150" size={36} color="black" />
               </span>
             </div>
-            <div style={noto.style} className="text-center text-3xl text-black font-bold py-4">
-              2024 RESUME
+            <div style={noto.style} className="text-center text-3xl text-black font-bold py-4 flex items-center justify-center gap-2">
+              <Image src="/icon.ico" alt={""} width={36} height={36} className="drop-shadow-md hover:scale-105 hover:rotate-12 transform transition-transform"/>
+              <p className="drop-shadow-md">RESUME</p>
             </div>
             <iframe className="w-full h-[calc(100%-4rem)]" src="/assets/documents/dominion%20resume.pdf" title="Resume" />
           </div>
