@@ -72,7 +72,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-white bg-opacity-20 rounded-lg shadow-lg">
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-[#d8d8ff] rounded-lg shadow-lg">
           <div className="flex flex-col items-center py-2">
             <Link href="#hero" passHref legacyBehavior>
               <a style={noto.style} className="text-sm py-2 hover:text-white transform transition-transform">About</a>
