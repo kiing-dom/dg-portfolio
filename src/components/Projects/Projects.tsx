@@ -16,6 +16,13 @@ const nun = Nunito_Sans({
 export default function Projects() {
     const projects = [
         {
+            title: "Educational Streaming Site",
+            tech: [SiSpring, FaJava, SiReact, SiAmazonaws, ],
+            description: "A full-stack streaming platform with Spring Boot for backend microservices and React for the frontend",
+            link: "https://github.com/kiing-dom/streamingsite",
+            cover: "/assets/images/streamingsite.png",
+        },
+        {
             title: "FyteSize: Nutrition Tracker for Boxers",
             tech: [SiReact, SiJavascript, SiOpenai, SiFirebase],
             description: "A comprehensive nutrition tracking app tailored for boxers to manage their diet and enhance performance.",
@@ -30,6 +37,13 @@ export default function Projects() {
             cover: "/assets/images/youtility.png",
         },
         {
+            title: "YouTube Stat Discord Bot",
+            tech: [SiPython, SiFlask, SiDiscord, SiYoutube ],
+            description: "A Discord bot that lets you quickly check youtube stats for channels, videos etc.",
+            link: "https://github.com/kiing-dom/discord-youtube-bot",
+            cover: "/assets/images/discord-youtube.png",
+        },
+        {
             title: "AI Flashcards SaaS",
             tech: [SiJavascript, SiNextdotjs, SiTailwindcss, SiFirebase, SiStripe, SiClerk],
             description: "A SaaS application for AI-powered flashcards, built with React and Material UI, utilizing Next.js, Clerk for authentication, Firebase, OpenAI integration, and Stripe for payment processing.",
@@ -42,20 +56,6 @@ export default function Projects() {
             description: "A full-stack website mirroring the functionality of Twitter/X",
             link: "https://x-clone-rho.vercel.app/",
             cover: "/assets/images/twitter-x-clone.png",
-        },
-        {
-            title: "Educational Streaming Site",
-            tech: [SiSpring, FaJava, SiReact, SiAmazonaws, ],
-            description: "A full-stack streaming platform with Spring Boot for backend microservices and React for the frontend",
-            link: "https://github.com/kiing-dom/streamingsite",
-            cover: "/assets/images/streamingsite.png",
-        },
-        {
-            title: "YouTube Stat Discord Bot",
-            tech: [SiPython, SiFlask, SiDiscord, SiYoutube ],
-            description: "A Discord bot that lets you quickly check youtube stats for channels, videos etc.",
-            link: "https://github.com/kiing-dom/discord-youtube-bot",
-            cover: "/assets/images/discord-youtube.png",
         },
     ];
 
