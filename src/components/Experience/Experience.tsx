@@ -32,6 +32,13 @@ const Experience = () => {
       logoSize: "128px"
     },
     {
+      position: "Student Tutor",
+      company: "University of Limerick",
+      duration: "Apr 2023 - Jun 2024",
+      description: "Provided tutoring services to fellow students in subjects such as OOP, Software Architecture + Design Patterns etc. Mentored students through the process of solving complex algorithmic problems, improving their problem-solving skills. Developed personalised study plans and assisted with coursework leading to improved academic performance.",
+      logo: "/assets/images/ul-logo.png"
+    },
+    {
       position: "Co-Op Software Engineer",
       company: "General Motors",
       duration: "Jun 2022 - Dec 2022",
