@@ -115,7 +115,7 @@ const Hero: React.FC = () => {
               <Image src="/icon.ico" alt={""} width={36} height={36} className="drop-shadow-md hover:scale-105 hover:rotate-12 transform transition-transform"/>
               <p className="drop-shadow-md">RESUME</p>
             </div>
-            <iframe className="w-full h-[calc(100%-4rem)]" src="/assets/documents/dominion%20resume.pdf" title="Resume" />
+            <iframe className="w-full h-[calc(100%-4rem)]" src="/assets/documents/Dominion Gbadamosi Resume.pdf" title="Resume" />
           </div>
         </div>
       )}
