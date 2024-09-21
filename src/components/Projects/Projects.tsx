@@ -1,7 +1,7 @@
 "use client"
 import { cn } from '../../utils/cn';
 import Link from 'next/link';
-import { SiFirebase, SiJavascript, SiOpenai, SiReact, SiHtml5, SiTailwindcss, SiGooglechrome, SiTypescript, SiNextdotjs, SiPrisma, SiMongodb, SiVercel, SiStripe, SiClerk, SiSpring, SiAmazonaws, SiFlask, SiPython, SiDiscord, SiYoutube } from 'react-icons/si';
+import { SiFirebase, SiJavascript, SiOpenai, SiReact, SiHtml5, SiTailwindcss, SiGooglechrome, SiTypescript, SiNextdotjs, SiPrisma, SiMongodb, SiVercel, SiStripe, SiClerk, SiSpring, SiAmazonaws, SiFlask, SiPython, SiDiscord, SiYoutube, SiJson, SiGithub } from 'react-icons/si';
 import "@/components/Projects/Projects.css";
 import { Nunito_Sans } from 'next/font/google';
 import Image from 'next/image';
@@ -16,8 +16,15 @@ const nun = Nunito_Sans({
 export default function Projects() {
     const projects = [
         {
+            title: "Auth the Grid (CLI Password Manager)",
+            tech: [SiPython, SiJson],
+            description: "Using a cli interface to manage passwords",
+            link: "https://github.com/kiing-dom/cli-password-manager",
+            cover: "/assets/images/auththegrid.png"
+        },
+        {
             title: "Educational Streaming Site",
-            tech: [SiSpring, FaJava, SiReact, SiAmazonaws, ],
+            tech: [SiSpring, FaJava, SiReact, SiAmazonaws,],
             description: "A full-stack streaming platform with Spring Boot for backend microservices and React for the frontend",
             link: "https://github.com/kiing-dom/streamingsite",
             cover: "/assets/images/streamingsite.png",
@@ -38,7 +45,7 @@ export default function Projects() {
         },
         {
             title: "YouTube Stat Discord Bot",
-            tech: [SiPython, SiFlask, SiDiscord, SiYoutube ],
+            tech: [SiPython, SiFlask, SiDiscord, SiYoutube],
             description: "A Discord bot that lets you quickly check youtube stats for channels, videos etc.",
             link: "https://github.com/kiing-dom/discord-youtube-bot",
             cover: "/assets/images/discord-youtube.png",
@@ -56,6 +63,14 @@ export default function Projects() {
             description: "A full-stack website mirroring the functionality of Twitter/X",
             link: "https://x-clone-rho.vercel.app/",
             cover: "/assets/images/twitter-x-clone.png",
+        },
+
+        {
+            title: "More Projects on GitHub",
+            tech: [SiGithub],
+            description: "Explore more of my projects and contributions on GitHub",
+            link: "https://github.com/kiing-dom",
+            cover: "/assets/images/githubheader.jpeg",
         },
     ];
 
