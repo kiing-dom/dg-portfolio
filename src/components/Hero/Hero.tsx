@@ -68,9 +68,8 @@ const Hero: React.FC = () => {
               Hey, it's Dom!
             </h1>
             <p style={nun.style} className="text-sm md:text-base lg:text-lg mb-6 max-w-prose">
-              I am a software engineer based in Ireland who recently graduated from the University of Limerick. I have
-              a deep interest in AI engineering and combining it with full stack development. I am passionate about
-              pursuing a career that will allow me to explore my interest in either or both of these fields.
+              I'm a software engineer from Ireland. I like to build large scale products, but also any projects that will challenge me/teach me something new. 
+              Strong believer in continuous learning and compound effort. 
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href={"mailto:dom1gbadamosi@gmail.com"}>
