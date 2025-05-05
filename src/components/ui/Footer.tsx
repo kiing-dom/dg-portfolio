@@ -1,22 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaYoutube, FaMediumM } from 'react-icons/fa';
 
 const socials = [
   {
     link: "https://www.linkedin.com/in/dominion-gbadamosi",
-    label: "LinkedIn",
+    label: "Dominion Gbadamosi LinkedIn",
     Icon: FaLinkedin
   },
   {
     link: "https://www.github.com/kiing-dom",
-    label: "GitHub",
+    label: "Dominion Gbadamosi GitHub",
     Icon: FaGithub
   }, {
     link: "https://www.youtube.com/@1KIINGDOM",
-    label: "YouTube channel",
+    label: "@1KIINGDOM on YouTube",
     Icon: FaYoutube
-  }
+  },
+  {
+    link: "https://www.medium.com/@dngi267",
+    label: "Medium",
+    Icon: FaMediumM
+    }
 ];
 
 export default function Footer() {

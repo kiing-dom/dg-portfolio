@@ -3,7 +3,7 @@
 import { Noto_Sans } from 'next/font/google';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaBars, FaTimes, FaMediumM } from 'react-icons/fa';
 
 const socials = [
   {
@@ -15,6 +15,11 @@ const socials = [
     link: "https://www.github.com/kiing-dom",
     label: "GitHub",
     Icon: FaGithub
+  },
+  {
+    link: "https://www.medium.com/@dngi267",
+    label: "Medium",
+    Icon: FaMediumM
   }
 ];
 

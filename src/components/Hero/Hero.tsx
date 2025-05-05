@@ -80,7 +80,7 @@ const Hero: React.FC = () => {
               <Button
                 onClick={toggleOverlay}
                 style={noto.style}
-                className="flex items-center justify-center px-5 py-2 text-sm font-semibold bg-[#592F83] text-white"
+                className="flex items-center justify-center px-5 py-2 text-sm font-semibold bg-[#592F83] hover:bg-[#8868BD] text-white"
               >
                 <CiRead className="mr-2 h-5 w-5" />
                 View Resume
