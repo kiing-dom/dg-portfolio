@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
           <div className="hidden md:block order-1 md:order-2 md:w-2/5 lg:w-2/5">
             <div className="relative w-3/4 mx-auto pb-[75%] rounded-full overflow-hidden">
               <Image
-                src="/assets/images/gradphoto.jpg"
+                src="/assets/images/hero/gradphoto.jpg"
                 layout="fill"
                 objectFit="cover"
                 alt="dominion gbadamosi portfolio main image"
