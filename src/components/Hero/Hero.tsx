@@ -64,16 +64,15 @@ const Hero: React.FC = () => {
       <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-white px-4 py-8">
         <div className="flex flex-col md:flex-row items-center max-w-7xl w-full">
           <div className="order-2 md:order-1 flex flex-col items-center md:items-start text-left md:w-3/5 mb-8 md:mb-0">
-            <h1 style={nun_bold.style} className="text-3xl md:text-4xl lg:text-5xl mb-4">
-              Hey, it's Dom!
+            <h1 style={nun_bold.style} className="text-2xl md:text-3xl lg:text-4xl mb-3">
+              Dominion Gbadamosi
             </h1>
-            <p style={nun.style} className="text-sm md:text-base lg:text-lg mb-6 max-w-prose">
-              I'm a software engineer from Ireland. I like to build large scale products, but also any projects that will challenge me/teach me something new. 
-              Strong believer in continuous learning and compound effort. 
+            <p style={nun.style} className="text-base md:text-lg mb-5 max-w-prose text-neutral-700 dark:text-neutral-200">
+              Backend-focused software engineer with strong experience in building scalable microservices and APIs using Java, Spring Boot, and Python. Passionate about designing systems and product-focused engineering.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-row gap-3 w-full">
               <Link href={"mailto:dom1gbadamosi@gmail.com"}>
-                <Button style={noto.style} className="flex items-center justify-center w-full sm:w-auto px-6 py-2 btn-custom">
+                <Button style={noto.style} className="flex items-center justify-center px-5 py-2 text-sm font-semibold">
                   <CiMail className="mr-2 h-5 w-5" />
                   Contact
                 </Button>
@@ -81,7 +80,7 @@ const Hero: React.FC = () => {
               <Button
                 onClick={toggleOverlay}
                 style={noto.style}
-                className="flex items-center justify-center w-full sm:w-auto px-6 py-2 btn-custom bg-red-500"
+                className="flex items-center justify-center px-5 py-2 text-sm font-semibold bg-[#592F83] text-white"
               >
                 <CiRead className="mr-2 h-5 w-5" />
                 View Resume

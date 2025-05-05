@@ -58,22 +58,25 @@ const Experience = () => {
 
   return (
     <div className="container mx-auto px-2 py-8">
-      <h2 style={nun_bold.style} className="text-3xl font-bold text-center mb-6">EXPERIENCE</h2>
-      
-      <div className="space-y-4">
+      <h2 style={nun_bold.style} className="text-3xl font-bold text-center mb-8 tracking-tight">EXPERIENCE</h2>
+      <div className="flex flex-col gap-6 max-w-2xl mx-auto">
         {experiences.map((exp, index) => (
-          <div key={index} className="flex flex-row bg-neutral-600 rounded-lg shadow-lg overflow-hidden">
-            <div className="w-1/5 flex items-center justify-center p-2 bg-neutral-900">
+          <div key={index} className="group border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 flex items-center gap-4 bg-white dark:bg-black hover:bg-neutral-50 dark:hover:bg-neutral-900 transition">
+            <div className="relative flex-shrink-0 w-16 h-16 rounded-md overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center">
               {typeof exp.logo === 'string' ? (
-                <Image className='rounded-md' src={exp.logo} alt={exp.company} width={64} height={64} />
+                <Image className='rounded-md' src={exp.logo} alt={exp.company} fill style={{ objectFit: 'cover' }} />
               ) : (
-                <SiGeneralmotors className="text-white" style={{ fontSize: '64px', color: 'cyan' }} />
+                <SiGeneralmotors className="text-neutral-700 dark:text-neutral-200" style={{ fontSize: '32px' }} />
               )}
             </div>
-            <div className="w-4/5 p-3">
-              <h3 style={nun_bold.style} className="text-lg font-bold text-white">{exp.position}</h3>
-              <h4 style={nun_bold.style} className="text-sm text-neutral-300">{exp.company} | {exp.duration}</h4>
-              <p style={noto.style} className="text-xs text-gray- mt-1">{exp.description}</p>
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-1">
+                <h3 style={nun_bold.style} className="text-lg font-semibold group-hover:underline text-neutral-900 dark:text-neutral-100">{exp.position}</h3>
+              </div>
+              <div className="text-xs text-neutral-500 dark:text-neutral-400 mb-1" style={nun_bold.style}>
+                {exp.company} | {exp.duration}
+              </div>
+              <p style={noto.style} className="text-sm text-neutral-700 dark:text-neutral-300">{exp.description}</p>
             </div>
           </div>
         ))}

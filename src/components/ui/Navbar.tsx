@@ -27,43 +27,43 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#d8d8ff] text-neutral-500 shadow-md fixed top-4 left-1/2 transform -translate-x-1/2 w-auto z-50 rounded-full px-4 py-2 md:px-6 md:py-2">
+    <nav className="backdrop-blur bg-white/80 dark:bg-black/80 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 fixed top-4 left-1/2 transform -translate-x-1/2 w-auto z-50 rounded-full px-6 py-2 shadow-none">
       <div className="flex justify-between items-center">
         <Link href="#hero" passHref legacyBehavior>
-          <a className="legacyBehavior pr-4">
-            <img src='icon.ico' alt='' className='w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 hover:rotate-12 hover:scale-125 drop-shadow-md' />
+          <a className="pr-4">
+            <img src='icon.ico' alt='' className='w-6 h-6 md:w-7 md:h-7 transition-transform duration-300 hover:rotate-6 hover:scale-110' />
           </a>
         </Link>
-        
-        <div className="hidden md:flex items-center gap-4">
+
+        <div className="hidden md:flex items-center gap-6">
           <Link href="#hero" passHref legacyBehavior>
-            <a style={noto.style} className="text-xs md:text-sm legacyBehavior hover:text-white transform transition-transform">About</a>
+            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">About</a>
           </Link>
           <Link href="#experience" passHref legacyBehavior>
-            <a style={noto.style} className="text-xs md:text-sm legacyBehavior hover:text-white transform transition-transform">Experience</a>
+            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">Experience</a>
           </Link>
           <Link href="#projects" passHref legacyBehavior>
-            <a style={noto.style} className="text-xs md:text-sm legacyBehavior hover:text-white transform transition-transform">Projects</a>
+            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">Projects</a>
           </Link>
           <Link href="#techstack" passHref legacyBehavior>
-            <a style={noto.style} className="text-xs md:text-sm legacyBehavior hover:text-white transform transition-transform">Skills</a>
+            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">Skills</a>
           </Link>
           <div className="flex items-center gap-2">
             {socials.map((social, index) => {
               const Icon = social.Icon;
               return (
                 <Link href={social.link} key={index} passHref legacyBehavior>
-                  <a className="legacyBehavior hover:text-white transform transition-transform" target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                    <Icon className="w-4 h-4 md:w-5 md:h-5 hover:scale-125 transition-all" />
+                  <a className="hover:text-black dark:hover:text-white transition-colors" target="_blank" rel="noopener noreferrer" aria-label={social.label}>
+                    <Icon className="w-5 h-5" />
                   </a>
                 </Link>
               );
             })}
           </div>
         </div>
-        
+
         <button 
-          className="md:hidden text-neutral-500 hover:text-white"
+          className="md:hidden text-neutral-800 dark:text-neutral-200"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <FaTimes /> : <FaBars />}
@@ -72,27 +72,27 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-[#d8d8ff] rounded-lg shadow-lg">
+        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-white/95 dark:bg-black/95 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-none">
           <div className="flex flex-col items-center py-2">
             <Link href="#hero" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-white transform transition-transform">About</a>
+              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">About</a>
             </Link>
             <Link href="#experience" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-white transform transition-transform">Experience</a>
+              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Experience</a>
             </Link>
             <Link href="#projects" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-white transform transition-transform">Projects</a>
+              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Projects</a>
             </Link>
             <Link href="#techstack" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-white transform transition-transform">Skills</a>
+              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Skills</a>
             </Link>
             <div className="flex items-center gap-4 mt-2">
               {socials.map((social, index) => {
                 const Icon = social.Icon;
                 return (
                   <Link href={social.link} key={index} passHref legacyBehavior>
-                    <a className="legacyBehavior hover:text-white transform transition-transform" target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                      <Icon className="w-5 h-5 hover:scale-125 transition-all" />
+                    <a className="hover:text-black dark:hover:text-white transition-colors" target="_blank" rel="noopener noreferrer" aria-label={social.label}>
+                      <Icon className="w-5 h-5" />
                     </a>
                   </Link>
                 );

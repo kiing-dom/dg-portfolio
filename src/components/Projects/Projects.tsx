@@ -13,6 +13,8 @@ const nun = Nunito_Sans({
     weight: "400"
 });
 
+import { useState } from "react";
+
 export default function Projects() {
     const projects = [
         {
@@ -74,38 +76,53 @@ export default function Projects() {
         },
     ];
 
+    const [showAll, setShowAll] = useState(false);
+    const visibleProjects = showAll ? projects : projects.slice(0, 4);
+
     return (
         <div className="container mx-auto px-4 py-8">
-            <h2 className="text-3xl font-bold text-center mb-6">PROJECTS</h2>
-            <BentoGrid className="mx-auto">
-                {projects.map((project, index) => (
-                    <Link key={index} href={project.link} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                        <BentoGridItem
-                            title={project.title}
-                            description={project.description}
-                            header={
-                                <div className="relative w-full h-40">
-                                    <Image
-                                        src={project.cover}
-                                        alt={project.title}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        className="rounded-t-xl"
-                                    />
-                                </div>
-                            }
-                            icon={
-                                <div className="flex space-x-2">
+            <h2 className="text-3xl font-bold text-center mb-8 tracking-tight">Projects</h2>
+            <div className="flex flex-col gap-6 max-w-2xl mx-auto">
+                {visibleProjects.map((project, index) => (
+                    <Link
+                        key={index}
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 flex items-center gap-4 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition"
+                    >
+                        <div className="relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800">
+                            <Image
+                                src={project.cover}
+                                alt={project.title}
+                                fill
+                                style={{ objectFit: "cover" }}
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-1">
+                                <h3 className="text-lg font-semibold group-hover:underline">{project.title}</h3>
+                                <span className="flex gap-1">
                                     {project.tech.map((Icon, i) => (
-                                        <Icon key={i} className="text-xl" />
+                                        <Icon key={i} className="text-neutral-500 text-base" />
                                     ))}
-                                </div>
-                            }
-                            className="h-full"
-                        />
+                                </span>
+                            </div>
+                            <p className="text-sm text-neutral-600 dark:text-neutral-400">{project.description}</p>
+                        </div>
                     </Link>
                 ))}
-            </BentoGrid>
+            </div>
+            {projects.length > 4 && (
+                <div className="flex justify-center mt-8">
+                    <button
+                        onClick={() => setShowAll((prev) => !prev)}
+                        className="px-4 py-2 text-sm border border-neutral-300 dark:border-neutral-700 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition"
+                    >
+                        {showAll ? "View Less" : "View More"}
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

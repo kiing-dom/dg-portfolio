@@ -19,14 +19,14 @@ const tech = [
 
 const TechStack = () => {
   return (
-    <section className="py-12 bg-black">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">SKILLS</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+    <section className="py-8 bg-white dark:bg-black">
+      <div className="container mx-auto px-2">
+        <h2 className="text-2xl font-bold text-center mb-6 tracking-tight">Skills</h2>
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
           {tech.map(({ text, Icon }) => (
-            <div key={text} className="flex flex-col items-center justify-center p-4 bg-black rounded-lg shadow-md transition-transform hover:scale-105">
-              <Icon className="text-4xl mb-2 text-white" />
-              <span className="text-md font-bold text-[#f8f8ff]">{text}</span>
+            <div key={text} className="flex flex-col items-center justify-center p-2 bg-transparent border border-neutral-100 dark:border-neutral-800 rounded transition-transform hover:scale-105">
+              <Icon className="text-xl mb-1 text-neutral-700 dark:text-neutral-200" />
+              <span className="text-xs font-medium text-neutral-700 dark:text-neutral-100">{text}</span>
             </div>
           ))}
         </div>
