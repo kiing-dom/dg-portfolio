@@ -22,7 +22,8 @@ import { SiFirebase,
     SiYoutube, 
     SiJson, 
     SiGithub,
-    SiSpotify
+    SiSpotify,
+    SiCss3
  } from 'react-icons/si';
 import "@/components/Projects/Projects.css";
 import { Nunito_Sans } from 'next/font/google';
@@ -35,9 +36,17 @@ const nun = Nunito_Sans({
 });
 
 import { useState } from "react";
+import { link } from 'fs';
 
 export default function Projects() {
     const projects = [
+        {
+            title: "KeepCode",
+            tech: [SiJavascript, SiHtml5, SiCss3],
+            description: "KeepCode is a lightweight browser extension to help track leetcode progress",
+            link: "https://github.com/kiing-dom/leetcode-tracker",
+            cover: "/assets/images/projects/keepcode-logo.png"
+        },
         {
             title: "chordn8",
             tech: [SiPython, SiFastapi, SiNextdotjs, SiTypescript],
