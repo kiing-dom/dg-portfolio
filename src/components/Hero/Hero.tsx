@@ -58,6 +58,8 @@ const Hero: React.FC = () => {
     document.body.style.overflow = "visible";
   };
 
+  const personalDescription = "Software engineer based in Ireland. Other than software I'm interested in tech, music and sports";
+
   return (
     <div className="relative min-h-screen">
       <div className="absolute inset-0 opacity-50"></div>
@@ -67,8 +69,8 @@ const Hero: React.FC = () => {
             <h1 style={nun_bold.style} className="text-2xl md:text-3xl lg:text-4xl mb-3">
               Dominion Gbadamosi
             </h1>
-            <p style={nun.style} className="text-base md:text-lg mb-5 max-w-prose text-neutral-700 dark:text-neutral-200">
-              Backend-focused software engineer with strong experience in building scalable microservices and APIs using Java, Spring Boot, and Python. Passionate about designing systems and product-focused engineering.
+            <p style={nun.style} className=" md:text-lg mb-5 max-w-prose text-neutral-700 dark:text-neutral-200">
+              {personalDescription}
             </p>
             <div className="flex flex-row gap-3 w-full">
               <Link href={"mailto:dom1gbadamosi@gmail.com"}>
