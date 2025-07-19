@@ -26,6 +26,9 @@ const Hero: React.FC = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
+  const GOOGLE_DRIVE_FILE_ID = "1w2rVPxk8DvZrMlr6CdMwgBlkUhPE4qsb";
+  const resumeUrl = `https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/preview`
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (overlayRef.current && !overlayRef.current.contains(event.target as Node)) {
@@ -115,7 +118,7 @@ const Hero: React.FC = () => {
               <Image src="/icon.ico" alt={""} width={36} height={36} className="drop-shadow-md hover:scale-105 hover:rotate-12 transform transition-transform"/>
               <p className="drop-shadow-md">RESUME</p>
             </div>
-            <iframe className="w-full h-[calc(100%-4rem)]" src="/assets/documents/Dominion Gbadamosi Resume.pdf" title="Resume" />
+            <iframe className="w-full h-[calc(100%-4rem)]" src={resumeUrl} title="Resume" />
           </div>
         </div>
       )}
