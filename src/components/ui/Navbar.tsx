@@ -1,6 +1,5 @@
 "use client"
 
-import { Noto_Sans } from 'next/font/google';
 import Link from 'next/link';
 import React, { useState } from 'react';
 import { FaLinkedin, FaGithub, FaBars, FaTimes, FaMediumM } from 'react-icons/fa';
@@ -23,11 +22,6 @@ const socials = [
   }
 ];
 
-const noto = Noto_Sans({
-  subsets: ["latin"],
-  weight: "700",
-});
-
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -42,16 +36,16 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-6">
           <Link href="#hero" passHref legacyBehavior>
-            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">About</a>
+            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">About</a>
           </Link>
           <Link href="#experience" passHref legacyBehavior>
-            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">Experience</a>
+            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">Experience</a>
           </Link>
           <Link href="#projects" passHref legacyBehavior>
-            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">Projects</a>
+            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">Projects</a>
           </Link>
           <Link href="#techstack" passHref legacyBehavior>
-            <a style={noto.style} className="text-sm hover:text-black dark:hover:text-white transition-colors">Skills</a>
+            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">Skills</a>
           </Link>
           <div className="flex items-center gap-2">
             {socials.map((social, index) => {
@@ -80,16 +74,16 @@ export default function Navbar() {
         <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-white/95 dark:bg-black/95 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-none">
           <div className="flex flex-col items-center py-2">
             <Link href="#hero" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">About</a>
+              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">About</a>
             </Link>
             <Link href="#experience" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Experience</a>
+              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Experience</a>
             </Link>
             <Link href="#projects" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Projects</a>
+              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Projects</a>
             </Link>
             <Link href="#techstack" passHref legacyBehavior>
-              <a style={noto.style} className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Skills</a>
+              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Skills</a>
             </Link>
             <div className="flex items-center gap-4 mt-2">
               {socials.map((social, index) => {

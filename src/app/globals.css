@@ -60,10 +60,9 @@
 @layer base {
   * {
     @apply border-border;
-  }
-  body {
+  }  body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', 'Nunito Sans', 'sans-serif';
+    font-family: 'Inter', 'sans-serif';
     font-size: 16px;
     letter-spacing: 0.01em;
     line-height: 1.7;
