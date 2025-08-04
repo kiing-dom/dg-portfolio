@@ -26,14 +26,8 @@ import { SiFirebase,
     SiCss3
  } from 'react-icons/si';
 import "@/components/Projects/Projects.css";
-import { Nunito_Sans } from 'next/font/google';
 import Image from 'next/image';
 import { FaJava } from 'react-icons/fa6';
-
-const nun = Nunito_Sans({
-    subsets: ["latin"],
-    weight: "400"
-});
 
 import { useState } from "react";
 import { link } from 'fs';
@@ -128,19 +122,17 @@ export default function Projects() {
     ];
 
     const [showAll, setShowAll] = useState(false);
-    const visibleProjects = showAll ? projects : projects.slice(0, 4);
-
-    return (
+    const visibleProjects = showAll ? projects : projects.slice(0, 4);    return (
         <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-8 tracking-tight">Projects</h2>
-            <div className="flex flex-col gap-6 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 tracking-tight text-neutral-900 dark:text-neutral-100">Projects</h2>
+            <div className="flex flex-col gap-6 max-w-4xl mx-auto">
                 {visibleProjects.map((project, index) => (
                     <Link
                         key={index}
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 flex items-center gap-4 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition"
+                        className="group border border-neutral-200 dark:border-neutral-700 rounded-lg p-6 flex items-start gap-6 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-all duration-300 hover:shadow-lg"
                     >
                         <div className="relative flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border border-neutral-200 dark:border-neutral-700 bg-neutral-100 dark:bg-neutral-800">
                             <Image

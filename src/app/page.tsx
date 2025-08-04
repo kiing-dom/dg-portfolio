@@ -2,31 +2,31 @@ import Experience from "@/components/Experience/Experience";
 import Hero from "@/components/Hero/Hero";
 import Projects from "@/components/Projects/Projects";
 import TechStack from "@/components/Skills/TechStack";
-import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer"; 
 
 export default function Home() {
   return (
     <main className="bg-black overflow-x-hidden">
-      <Navbar />
-      <div className="max-w-7xl mx-auto p-5 -mt-16">
-        <div id="hero">
-          <Hero />
-        </div>
-      </div>
-      <div className="max-w-7xl mx-auto -mt-32"></div>
-      <div id="experience">
+      <section id="hero" className="relative hero-section">
+        <Hero />
+      </section>
+      
+      <section id="experience" className="section-transition relative z-10 bg-white dark:bg-black py-16">
         <Experience />
-      </div>
-      <div className="max-w-7xl mx-auto p-5 pt-24">
-        <div id="projects">
+      </section>
+      
+      <section id="projects" className="section-transition relative z-10 bg-white dark:bg-black py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <Projects />
         </div>
-        <div className="max-w-7xl mx-auto p-5"></div>
-        <div id="techstack">
+      </section>
+      
+      <section id="techstack" className="section-transition relative z-10 bg-white dark:bg-black py-16">
+        <div className="max-w-7xl mx-auto px-4">
           <TechStack />
         </div>
-      </div>
+      </section>
+      
       <Footer />
     </main>
   );
