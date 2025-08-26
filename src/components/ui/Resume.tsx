@@ -1,13 +1,14 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { X } from "lucide-react";
 
 const Resume: React.FC = () => {
   const [showOverlay, setShowOverlay] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
 
   const GOOGLE_DRIVE_FILE_ID = "1w2rVPxk8DvZrMlr6CdMwgBlkUhPE4qsb";
-  const resumeUrl = https://drive.google.com/file/d//preview;
+  const resumeUrl = `https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/preview`;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -65,7 +66,7 @@ const Resume: React.FC = () => {
               <h2 className="text-lg font-medium text-black dark:text-white">Resume</h2>
               <div className="flex items-center gap-2">
                 <a
-                  href={https://drive.google.com/file/d//view}
+                  href={`https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/view`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-black dark:text-white rounded transition-colors"
@@ -77,7 +78,7 @@ const Resume: React.FC = () => {
                   className="p-1 hover:bg-gray-100 dark:hover:bg-gray-800 rounded transition-colors"
                   aria-label="Close resume"
                 >
-                  <span className="text-lg text-gray-500 dark:text-gray-400"></span>
+                  <X className="w-5 h-5 text-gray-500 dark:text-gray-400" />
                 </button>
               </div>
             </div>
