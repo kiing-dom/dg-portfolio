@@ -1,33 +1,48 @@
-import Experience from "@/components/Experience/Experience";
-import Hero from "@/components/Hero/Hero";
-import Projects from "@/components/Projects/Projects";
-import TechStack from "@/components/Skills/TechStack";
-import Footer from "@/components/ui/Footer"; 
+import Experience from "@/components/Experience/ExperienceMinimal";
+import Hero from "@/components/Hero/HeroMinimalClean";
+import Projects from "@/components/Projects/ProjectsMinimal";
+import Blog from "@/components/Blog/BlogMinimal";
+import Footer from "@/components/ui/FooterMinimal";
+import Navbar from "@/components/ui/Navbar";
 
 export default function Home() {
   return (
-    <main className="bg-black overflow-x-hidden">
-      <section id="hero" className="relative hero-section">
-        <Hero />
-      </section>
-      
-      <section id="experience" className="section-transition relative z-10 bg-white dark:bg-black py-16">
-        <Experience />
-      </section>
-      
-      <section id="projects" className="section-transition relative z-10 bg-white dark:bg-black py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <Projects />
+    <main className="bg-white dark:bg-black min-h-screen transition-colors">
+      <Navbar />
+      <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
+        {/* Large name header above everything */}
+        <div>
+          <h1 className="text-9xl font-bold text-black dark:text-white mb-16 tracking-tight">
+            DOMINION
+          </h1>
+          <p className="text-black dark:text-white -mt-16 mb-12 text-sm uppercase">aka dom, kiing dom, dngi</p>
         </div>
-      </section>
-      
-      <section id="techstack" className="section-transition relative z-10 bg-white dark:bg-black py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <TechStack />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left Column */}
+          <div className="space-y-16">
+            <section id="hero">
+              <Hero />
+            </section>
+
+            <section id="experience">
+              <Experience />
+            </section>
+          </div>
+          {/* Right Column */}
+          <div className="space-y-16">
+            <section id="projects">
+              <Projects />
+            </section>
+
+            <section id="blog">
+              <Blog />
+            </section>
+          </div>
         </div>
-      </section>
-      
-      <Footer />
+
+        <Footer />
+      </div>
     </main>
   );
 }

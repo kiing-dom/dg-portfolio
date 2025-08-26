@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import Link from 'next/link';
-import React, { useState } from 'react';
-import { FaLinkedin, FaGithub, FaBars, FaTimes, FaMediumM } from 'react-icons/fa';
+import React from 'react';
+import { FaLinkedin, FaGithub, FaMediumM } from 'react-icons/fa';
+import ThemeToggle from './ThemeToggle';
 
 const socials = [
   {
@@ -12,7 +13,7 @@ const socials = [
   },
   {
     link: "https://www.github.com/kiing-dom",
-    label: "GitHub",
+    label: "GitHub", 
     Icon: FaGithub
   },
   {
@@ -23,83 +24,48 @@ const socials = [
 ];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   return (
-    <nav className="backdrop-blur bg-white/80 dark:bg-black/80 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 fixed top-4 left-1/2 transform -translate-x-1/2 w-auto z-50 rounded-full px-6 py-2 shadow-none">
-      <div className="flex justify-between items-center">
-        <Link href="#hero" passHref legacyBehavior>
-          <a className="pr-4">
-            <img src='icon.ico' alt='' className='w-6 h-6 md:w-7 md:h-7 transition-transform duration-300 hover:rotate-6 hover:scale-110' />
-          </a>
-        </Link>
-
-        <div className="hidden md:flex items-center gap-6">
-          <Link href="#hero" passHref legacyBehavior>
-            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">About</a>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black border-b border-gray-100 dark:border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center gap-8">
+          <Link href="#hero" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+            home
           </Link>
-          <Link href="#experience" passHref legacyBehavior>
-            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">Experience</a>
+          <Link href="#experience" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+            experience
+          </Link>          <Link href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+            projects
           </Link>
-          <Link href="#projects" passHref legacyBehavior>
-            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">Projects</a>
-          </Link>
-          <Link href="#techstack" passHref legacyBehavior>
-            <a className="text-sm hover:text-black dark:hover:text-white transition-colors">Skills</a>
-          </Link>
-          <div className="flex items-center gap-2">
-            {socials.map((social, index) => {
+          <Link href="#blog" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+            blog
+          </Link>          <div className="flex items-center gap-4 ml-auto">
+            <a
+              href="https://drive.google.com/file/d/1w2rVPxk8DvZrMlr6CdMwgBlkUhPE4qsb/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium"
+            >
+              resume
+            </a>
+            <ThemeToggle />
+            {socials.map((social) => {
               const Icon = social.Icon;
               return (
-                <Link href={social.link} key={index} passHref legacyBehavior>
-                  <a className="hover:text-black dark:hover:text-white transition-colors" target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                    <Icon className="w-5 h-5" />
-                  </a>
-                </Link>
+                <a
+                  key={social.label}
+                  href={social.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                  aria-label={social.label}
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
               );
             })}
           </div>
         </div>
-
-        <button 
-          className="md:hidden text-neutral-800 dark:text-neutral-200"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <FaTimes /> : <FaBars />}
-        </button>
       </div>
-
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 mt-2 bg-white/95 dark:bg-black/95 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-none">
-          <div className="flex flex-col items-center py-2">
-            <Link href="#hero" passHref legacyBehavior>
-              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">About</a>
-            </Link>
-            <Link href="#experience" passHref legacyBehavior>
-              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Experience</a>
-            </Link>
-            <Link href="#projects" passHref legacyBehavior>
-              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Projects</a>
-            </Link>
-            <Link href="#techstack" passHref legacyBehavior>
-              <a className="text-sm py-2 hover:text-black dark:hover:text-white transition-colors">Skills</a>
-            </Link>
-            <div className="flex items-center gap-4 mt-2">
-              {socials.map((social, index) => {
-                const Icon = social.Icon;
-                return (
-                  <Link href={social.link} key={index} passHref legacyBehavior>
-                    <a className="hover:text-black dark:hover:text-white transition-colors" target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                      <Icon className="w-5 h-5" />
-                    </a>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }
