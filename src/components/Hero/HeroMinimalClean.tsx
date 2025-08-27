@@ -9,9 +9,7 @@ const Hero: React.FC = () => {
         <p>i'm a software engineer who loves building things that matter.</p>
 
         <p>
-          i have been hooked on computers ever since i was young. i am
-          interested in all domains from web dev to mobile to enterprise
-          software and even hardware.
+          i have been hooked on computers ever since i was young. i have a deep interest in backend domains e.g. distributed systems, databases, apis.
         </p>
 
         <p>

@@ -1,44 +1,59 @@
 "use client";
 
-import Link from 'next/link';
-import React from 'react';
-import { FaLinkedin, FaGithub, FaMediumM } from 'react-icons/fa';
-import ThemeToggle from './ThemeToggle';
+import Link from "next/link";
+import React from "react";
+import { FaLinkedin, FaGithub, FaMediumM } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const socials = [
   {
     link: "https://www.linkedin.com/in/dominion-gbadamosi",
     label: "LinkedIn",
-    Icon: FaLinkedin
+    Icon: FaLinkedin,
   },
   {
     link: "https://www.github.com/kiing-dom",
-    label: "GitHub", 
-    Icon: FaGithub
+    label: "GitHub",
+    Icon: FaGithub,
   },
   {
     link: "https://www.medium.com/@dngi267",
     label: "Medium",
-    Icon: FaMediumM
-  }
+    Icon: FaMediumM,
+  },
 ];
 
 export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-black border-b border-gray-100 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-4">
+        {" "}
         <div className="flex items-center gap-8">
-          <Link href="#hero" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+          <Link
+            href="/#hero"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium"
+          >
             home
           </Link>
-          <Link href="#experience" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+          <Link
+            href="/#experience"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium"
+          >
             experience
-          </Link>          <Link href="#projects" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+          </Link>{" "}
+          <Link
+            href="/#projects"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium"
+          >
             projects
           </Link>
-          <Link href="#blog" className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium">
+          <Link
+            href="/#blog"
+            className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors text-sm font-medium"
+          >
             blog
-          </Link>          <div className="flex items-center gap-4 ml-auto">
+          </Link>
+          <div className="flex items-center gap-4 ml-auto">
             <a
               href="https://drive.google.com/file/d/1w2rVPxk8DvZrMlr6CdMwgBlkUhPE4qsb/view"
               target="_blank"

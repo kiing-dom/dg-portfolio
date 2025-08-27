@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { ViewCounter } from "@/components/ViewCounter";
 
 interface BlogPost {
   slug: string;
@@ -55,25 +56,27 @@ const BlogMinimal = () => {
                 </div>
               ))}
             </div>
-          ) : blogPosts.length > 0 ? (
-            blogPosts.map((post) => (
+          ) : blogPosts.length > 0 ? (            blogPosts.map((post) => (
               <div key={post.slug} className="space-y-2">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <h3 className="text-lg font-medium text-black dark:text-white">
                     <a
                       href={`/blog/${post.slug}`}
-                      className="underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors"
+                      className="underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors text-md"
                     >
                       {post.title}
                     </a>
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    {new Date(post.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </p>
+                  <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
+                    <time>
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "short",
+                        day: "numeric",
+                      })}
+                    </time>
+                    <ViewCounter slug={post.slug} />
+                  </div>
                 </div>
                 <p className="text-gray-500 dark:text-gray-400 leading-relaxed">
                   {post.description}
@@ -91,7 +94,7 @@ const BlogMinimal = () => {
 
         <div className="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
           <p className="text-gray-600 dark:text-gray-300">
-            in the meantime, you can find my technical writing on{" "}
+            in the meantime, you can find some more of my technical writing on{" "}
             <a
               href="https://www.medium.com/@dngi267"
               target="_blank"
