@@ -1,65 +1,40 @@
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { Redis } from '@upstash/redis';
 
-const viewsFilePath = path.join(process.cwd(), 'data', 'views.json');
-
-// Ensure data directory exists
-const dataDir = path.dirname(viewsFilePath);
-if (!fs.existsSync(dataDir)) {
-  fs.mkdirSync(dataDir, { recursive: true });
-}
-
-interface ViewData {
-  [slug: string]: number;
-}
-
-function getViews(): ViewData {
-  try {
-    if (fs.existsSync(viewsFilePath)) {
-      const data = fs.readFileSync(viewsFilePath, 'utf8');
-      return JSON.parse(data);
-    }
-  } catch (error) {
-    console.error('Error reading views file:', error);
-  }
-  return {};
-}
-
-function saveViews(views: ViewData): void {
-  try {
-    fs.writeFileSync(viewsFilePath, JSON.stringify(views, null, 2));
-  } catch (error) {
-    console.error('Error saving views file:', error);
-  }
-}
+// Initialize Upstash Redis client
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL!,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+});
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const slug = searchParams.get('slug');
 
-  const views = getViews();
-
   if (slug) {
-    return NextResponse.json({ views: views[slug] || 0 });
+    const views = await redis.get<number>(`views:${slug}`);
+    return NextResponse.json({ views: views || 0 });
   }
 
-  return NextResponse.json(views);
+  // Optionally, return all views (not efficient for large sets)
+  // const keys = await redis.keys('views:*');
+  // const allViews = {};
+  // for (const key of keys) {
+  //   allViews[key.replace('views:', '')] = await redis.get<number>(key);
+  // }
+  // return NextResponse.json(allViews);
+
+  return NextResponse.json({});
 }
 
 export async function POST(request: NextRequest) {
   try {
     const { slug } = await request.json();
-    
     if (!slug) {
       return NextResponse.json({ error: 'Slug is required' }, { status: 400 });
     }
-
-    const views = getViews();
-    views[slug] = (views[slug] || 0) + 1;
-    saveViews(views);
-
-    return NextResponse.json({ views: views[slug] });
+    const views = await redis.incr(`views:${slug}`);
+    return NextResponse.json({ views });
   } catch (error) {
     console.error('Error updating views:', error);
     return NextResponse.json({ error: 'Failed to update views' }, { status: 500 });
