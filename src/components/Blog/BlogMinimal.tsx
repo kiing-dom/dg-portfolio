@@ -56,7 +56,8 @@ const BlogMinimal = () => {
                 </div>
               ))}
             </div>
-          ) : blogPosts.length > 0 ? (            blogPosts.map((post) => (
+          ) : blogPosts.length > 0 ? (
+            blogPosts.map((post) => (
               <div key={post.slug} className="space-y-2">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
                   <h3 className="text-lg font-medium text-black dark:text-white">
@@ -75,7 +76,7 @@ const BlogMinimal = () => {
                         day: "numeric",
                       })}
                     </time>
-                    <ViewCounter slug={post.slug} />
+                    <ViewCounter slug={post.slug} incrementOnView={false}/>
                   </div>
                 </div>
                 <p className="text-gray-500 dark:text-gray-400 leading-relaxed">

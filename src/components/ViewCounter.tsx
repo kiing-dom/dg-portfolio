@@ -5,10 +5,11 @@ import { useViewCounter } from '@/hooks/useViewCounter';
 interface ViewCounterProps {
   slug: string;
   className?: string;
+  incrementOnView?: boolean;
 }
 
-export function ViewCounter({ slug, className = '' }: ViewCounterProps) {
-  const { views, loading } = useViewCounter(slug);
+export function ViewCounter({ slug, className = '', incrementOnView = true }: ViewCounterProps) {
+  const { views, loading } = useViewCounter(slug, incrementOnView);
 
   if (loading) {
     return (
