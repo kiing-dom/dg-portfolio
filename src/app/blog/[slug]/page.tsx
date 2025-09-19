@@ -155,13 +155,15 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 </strong>
               ),
               img: ({ src, alt, width, style }) => (
-                <img
-                  src={src}
-                  alt={alt || ""}
-                  width={width}
-                  style={style}
-                  className="h-auto rounded-lg my-4"
-                />
+                <div className="flex justify-center my-4 drop-shadow-md">
+                  <img
+                    src={src}
+                    alt={alt || ""}
+                    width={width}
+                    style={style}
+                    className="h-auto rounded-lg max-w-full"
+                  />
+                </div>
               ),
             }}
           >
