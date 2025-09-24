@@ -6,16 +6,10 @@ const Hero: React.FC = () => {
     <div className="pb-8">
       {/* Bio text */}
       <div className="text-xl leading-relaxed text-black dark:text-white space-y-6 max-w-none">
-        <p>i'm a software engineer who loves building things that matter.</p>
+        <p>I'm a developer living in Ireland</p>
 
         <p>
-          i have been hooked on computers ever since i was young. i have a deep interest in backend domains e.g. distributed systems, databases, apis.
-        </p>
-
-        <p>
-          currently exploring new opportunities while working on personal
-          projects. i write about tech, share my learnings, and try to
-          contribute to the developer community whenever possible.
+          Spend basically all my time working on projects I think are cool, reading books, writing and playing music.
         </p>
 
         <p>
