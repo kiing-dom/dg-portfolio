@@ -5,8 +5,8 @@ const Hero: React.FC = () => {
   return (
     <div className="pb-8">
       {/* Bio text */}
-      <div className="text-xl leading-relaxed text-black dark:text-white space-y-6 max-w-none">
-        <p>I'm a developer living in Ireland</p>
+      <div className="text-xl leading-relaxed text-black dark:text-white space-y-2 max-w-none">
+        <p>I'm a developer living in Ireland.</p>
 
         <p>
           Spend basically all my time working on projects I think are cool, reading books, writing and playing music.
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
           potential collaborations, feel free to reach out.
         </p>
 
-        <p className="text-lg">
+        <p className="text-sm">
           you can find me on{" "}
           <a
             href="https://github.com/kiing-dom"
