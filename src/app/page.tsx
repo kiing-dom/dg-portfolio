@@ -9,13 +9,21 @@ export default function Home() {
   return (
     <main className="bg-white dark:bg-black min-h-screen transition-colors">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
-        {/* Large name header above everything */}
-        <div>
-          <h1 className="text-9xl font-bold text-black dark:text-white mb-16 tracking-tight">
+      <div className="max-w-7xl mx-auto px-6 py-8 pt-24">        {/* Large name header above everything */}
+        <div className="mb-16">
+          <h1 className="text-9xl font-bold text-black dark:text-white mb-4 tracking-tight">
             DOMINION
           </h1>
-          <p className="text-black dark:text-white -mt-16 mb-12 text-sm uppercase">aka dom, kiing dom, dngi</p>
+
+          <p className="text-black dark:text-white font-semibold mb-2 text-lg uppercase">
+            founder @
+            <a href="http://github.com/iwaju-labs" className="hover:underline">
+              <span>Iwaju Labs &copy;</span>
+            </a>
+          </p>
+          <p className="text-black dark:text-white mb-0 text-sm uppercase">
+            aka dom, kiing dom, dngi
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
