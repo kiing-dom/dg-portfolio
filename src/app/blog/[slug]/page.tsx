@@ -51,7 +51,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           href="/#blog"
           className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors mb-8"
         >
-          ← back to blog
+          ← back to home
         </Link>
         {/* Post header */}
         <header className="mb-8">
@@ -176,7 +176,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             href="/#blog"
             className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
           >
-            ← back to all posts{" "}
+            ← back to home{" "}
           </Link>
         </footer>
       </div>
