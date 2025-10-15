@@ -1,6 +1,6 @@
 ---
 title: "building a multi-device clipboard manager with websockets"
-# description: "explaining the reason for, process behind, and benefits of the project"
+description: "describing the development process of cuhlippa"
 date: "2025-08-26"
 published: true
 ---
