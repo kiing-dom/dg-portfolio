@@ -13,7 +13,7 @@ export default function Home() {
         {" "}
         {/* Large name header above everything */}
         <div className="mb-16">
-          <h1 className="text-9xl font-bold text-black dark:text-white mb-4 tracking-tight">
+          <h1 className="text-9xl font-bold text-black dark:text-white mb-4 tracking-tight select-none">
             DOMINION
           </h1>
 
