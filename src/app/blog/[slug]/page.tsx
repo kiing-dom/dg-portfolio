@@ -2,9 +2,12 @@ import { notFound } from "next/navigation";
 import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
 import { ViewCounter } from "@/components/ViewCounter";
+import "katex/dist/katex.min.css";
 
 interface BlogPostPageProps {
   params: {
@@ -27,12 +30,49 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   if (!post) {
     return {
       title: "Post Not Found",
+      description: "The requested blog post could not be found.",
     };
   }
 
   return {
     title: post.title,
     description: post.description,
+    keywords: [
+      "Dominion Gbadamosi",
+      "Software Engineer",
+      "Blog",
+      "Solo Developer",
+      "Tech Blog",
+      "Programming",
+      "Development"
+    ],
+    authors: [{ name: "Dominion Gbadamosi" }],
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: "article",
+      publishedTime: post.date,
+      authors: ["Dominion Gbadamosi"],
+      url: `/blog/${post.slug}`,
+      images: [
+        {
+          url: "/assets/images/hero/gradphoto.jpg",
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.description,
+      creator: "@_dngi",
+      images: ["/assets/images/hero/gradphoto.jpg"],
+    },
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
   };
 }
 
@@ -73,11 +113,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               {post.description}
             </p>
           )}
-        </header>{" "}
+        </header>
         {/* Post content */}
         <article className="prose prose-gray dark:prose-invert max-w-none">
           <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               h1: ({ children }) => (
                 <h1 className="text-2xl md:text-3xl font-bold text-black dark:text-white mt-8 mb-4 first:mt-0">
@@ -140,7 +181,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               a: ({ href, children }) => (
                 <a
                   href={href}
-                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                  className="text-red-600 dark:text-red-400 hover:underline"
                   target={href?.startsWith("http") ? "_blank" : undefined}
                   rel={
                     href?.startsWith("http") ? "noopener noreferrer" : undefined

@@ -1,15 +1,20 @@
 ---
-title: "starting my solo dev journey"
+title: trying to go from €0 → €10k MRR - solo developer journey
 description: "documenting my process of building, deploying and promoting projects and trying to make money"
 date: "2025-10-15"
-published: false
+published: true
 ---
 
-> This blog will be structured differently than usual. The topic I am discussing isn't inherently techinal either. I just want to outline something that may well become a series of blog posts detailing my journey as a solo devloper.
+> This blog will be structured differently than usual. The topic I am discussing isn't inherently techinal either. I just want to outline something that may well become a series of blog posts detailing my journey as a solo devloper. It might not be structured as it's just going to be me laying out my thoughts as best I can.
 
 ## why?
-For a long time I've been led to believe that I should chase a 9-5 because of the safety and security. But unfortunately (I dont see it as unfortunate now) I had some roadblocks in finding employment after college and it opened my eyes to a lot. For the most part, those employed by corporate are just filling quotas. This is not to take away from the talent of engineers, but any competent applicant can be trained into a role player. This obviously doesn't include the rare engineers that are more capable than average. This means that most engineers are seen as replaceable by their companies, which has been shown worldwide with recent layoffs, hiring freezes, and a lot of treatment people face in gruelling interview processes.
-
-I'm not saying that a 9-5s are not worth it, because they definitely are. My point is that if I had the option to work a stable job or work a stable job while grinding for my own freedom, the latter sounds much more gratifying personally.
+Well, it started off as a random thought. Like you see a lot of posts on social of media of $X$ person making $Y$ amount and you start to feel suspicious about whether it's actually possible. But recently I've seen enough to start believing that it is. Also with how easily accessible information is, I don't think there's a better time to start than right now.
 
 ## goals.
+The goals are pretty simple. To build profitable products from zero while documenting the process through this blog series and also on social media platforms like [YouTube](https://youtube.com/@267dngi) and [Twitter](https://twitter.com/@_dngi).
+
+Basically just giving regular updates on new products, features in existing products, and changes in userbase, and other key metrics to see if I can make the solo dev lifestyle a success.
+
+As of now the only the only product I have hosted is '[brandalyze](https://brandalyze.io)' which as of now, is in it's MVP stage. So for now, the updates will focus on brandalyze's success.
+
+So I'll close of this first blog by saying I'm looking forward to the grind and seeing results. Also join the waitlist and try brandalyze.

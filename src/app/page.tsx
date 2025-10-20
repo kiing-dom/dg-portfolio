@@ -4,6 +4,25 @@ import Projects from "@/components/Projects/ProjectsMinimal";
 import Blog from "@/components/Blog/BlogMinimal";
 import Footer from "@/components/ui/FooterMinimal";
 import Navbar from "@/components/ui/Navbar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog documenting the journey from €0 → €10k MRR.",
+  openGraph: {
+    title: "Dominion Gbadamosi - Software Engineer & Founder",
+    description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog.",
+    url: "/",
+    images: [
+      {
+        url: "/assets/images/hero/gradphoto.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dominion Gbadamosi Portfolio",
+      },
+    ],
+  },
+};
 
 export default function Home() {
   return (

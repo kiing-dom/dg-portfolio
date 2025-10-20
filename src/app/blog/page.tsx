@@ -2,6 +2,41 @@ import { getAllBlogPosts } from "@/lib/blog";
 import { ViewCounter } from "@/components/ViewCounter";
 import Link from "next/link";
 import Navbar from "@/components/ui/Navbar";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Read my thoughts on software engineering, solo development, building profitable products, and my journey from €0 → €10k MRR. Stories and updates from a software engineer.",
+  keywords: [
+    "Blog",
+    "Software Engineering Blog",
+    "Solo Developer Blog", 
+    "Tech Blog",
+    "Programming Blog",
+    "Startup Blog",
+    "MRR Journey",
+    "Product Development"
+  ],
+  openGraph: {
+    title: "Blog - Dominion Gbadamosi",
+    description: "Read my thoughts on software engineering, solo development, and building profitable products.",
+    url: "/blog",
+    images: [
+      {
+        url: "/assets/images/hero/gradphoto.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dominion Gbadamosi Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog - Dominion Gbadamosi",
+    description: "Read my thoughts on software engineering, solo development, and building profitable products.",
+    creator: "@_dngi",
+  },
+};
 
 export default async function BlogsPage() {
   const blogs = getAllBlogPosts();
