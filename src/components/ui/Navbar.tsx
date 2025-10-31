@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import React from "react";
-import { FaLinkedin, FaGithub, FaMediumM } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaMediumM, FaDiscord } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 import ThemeToggle from "./ThemeToggle";
 
 const socials = [
@@ -21,6 +22,16 @@ const socials = [
     label: "Medium",
     Icon: FaMediumM,
   },
+  {
+    link: "https://www.twitter.com._dngi",
+    label: "Twitter/X",
+    Icon: FaXTwitter,
+  },
+  {
+    link: "https://discord.gg/scf7jnQjDY",
+    label: "Join the Discord",
+    Icon: FaDiscord,
+  }
 ];
 
 export default function Navbar() {
@@ -74,7 +85,7 @@ export default function Navbar() {
                   className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
                   aria-label={social.label}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-6 h-6" />
                 </a>
               );
             })}
