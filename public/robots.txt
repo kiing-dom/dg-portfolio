@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dominion-gbadamosi.xyz/sitemap.xml
+
+# Helpful crawl hints
+User-agent: Googlebot
+Allow: /

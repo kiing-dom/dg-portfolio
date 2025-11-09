@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       type: "article",
       publishedTime: post.date,
       authors: ["Dominion Gbadamosi"],
-      url: `/blog/${post.slug}`,
+      url: `https://dominion-gbadamosi.xyz/blog/${post.slug}`,
       images: [
         {
           url: "/assets/images/hero/gradphoto.jpg",
@@ -71,7 +71,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       images: ["/assets/images/hero/gradphoto.jpg"],
     },
     alternates: {
-      canonical: `/blog/${post.slug}`,
+      canonical: `https://dominion-gbadamosi.xyz/blog/${post.slug}`,
     },
   };
 }
