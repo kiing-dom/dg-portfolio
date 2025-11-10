@@ -23,7 +23,7 @@ const socials = [
     Icon: FaMediumM,
   },
   {
-    link: "https://www.twitter.com._dngi",
+    link: "https://www.twitter.com/_dngi",
     label: "Twitter/X",
     Icon: FaXTwitter,
   },
