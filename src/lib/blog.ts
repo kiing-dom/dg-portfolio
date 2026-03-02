@@ -33,7 +33,9 @@ export function getAllBlogPosts(): BlogPost[] {
           slug,
           title: data.title || slug,
           description: data.description || '',
-          date: data.date || new Date().toISOString().split('T')[0],
+          date: data.date instanceof Date
+            ? data.date.toISOString().split('T')[0]
+            : String(data.date || new Date().toISOString().split('T')[0]),
           content,
           published: data.published !== false, // Default to true unless explicitly set to false
         };
@@ -63,7 +65,9 @@ export function getBlogPost(slug: string): BlogPost | null {
       slug,
       title: data.title || slug,
       description: data.description || '',
-      date: data.date || new Date().toISOString().split('T')[0],
+      date: data.date instanceof Date
+        ? data.date.toISOString().split('T')[0]
+        : String(data.date || new Date().toISOString().split('T')[0]),
       content,
       published: data.published !== false,
     };
