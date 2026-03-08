@@ -1,32 +1,39 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useTheme } from '@/components/ThemeProvider';
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check localStorage for saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference
-      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      setTheme(systemTheme);
-    }
+    setMounted(true);
   }, []);
 
-  useEffect(() => {
-    // Apply theme to document
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+  // Resolve the effective visual theme for the label
+  let resolvedTheme: 'light' | 'dark' = 'light';
+  if (theme === 'system') {
+    if (mounted) {
+      resolvedTheme = globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+  } else {
+    resolvedTheme = theme;
+  }
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
   };
+
+  // Avoid rendering the label until mounted to prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <button
+        className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors text-sm font-medium"
+        aria-label="Toggle theme"
+      />
+    );
+  }
 
   return (
     <button
@@ -34,7 +41,7 @@ export default function ThemeToggle() {
       className="text-gray-600 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors text-sm font-medium"
       aria-label="Toggle theme"
     >
-      {theme === 'light' ? 'dark' : 'light'}
+      {resolvedTheme === 'light' ? 'dark' : 'light'}
     </button>
   );
 }

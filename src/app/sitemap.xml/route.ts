@@ -8,6 +8,7 @@ export async function GET() {
   const urls = [
     { loc: `${baseUrl}/`, lastmod: new Date().toISOString() },
     { loc: `${baseUrl}/blog`, lastmod: new Date().toISOString() },
+    { loc: `${baseUrl}/experience`, lastmod: new Date().toISOString() },
     ...posts.map((p) => ({ loc: `${baseUrl}/blog/${p.slug}`, lastmod: new Date(p.date).toISOString() })),
   ];
 

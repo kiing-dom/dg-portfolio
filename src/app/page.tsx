@@ -37,10 +37,7 @@ export default function Home() {
           </h1>
 
           <p className="text-black dark:text-white font-semibold mb-2 text-lg uppercase">
-            founder @
-            <a href="http://github.com/iwaju-labs" className="hover:underline">
-              <span>Iwaju Labs &copy;</span>
-            </a>
+            Software Engineer, Founder
           </p>
           <p className="text-black dark:text-white mb-0 text-sm uppercase">
             aka dom, kiing dom, dngi

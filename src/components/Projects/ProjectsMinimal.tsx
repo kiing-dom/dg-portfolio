@@ -5,31 +5,24 @@ import React from "react";
 const ProjectsMinimal = () => {
   const projects = [
     {
-      title: "cuhlippa",
-      description: "a cross-platform clipboard manager using websocket api",
+      title: "url shortener",
+      description: "a url shortener written in go, scaled with kubernetes and redis",
       link: "https://github.com/kiing-dom/cuhlippa",
+      year: "2026",
+    },
+    {
+      title: "fuzc",
+      description:
+        "a fuzzy finder for comments written in rust",
+      link: "https://github.com/kiing-dom/fuzc",
       year: "2025",
     },
     {
-      title: "KeepCode",
+      title: "brandalyze",
       description:
-        "a lightweight browser extension to help track leetcode progress. built with vanilla javascript and chrome extension apis.",
-      link: "https://github.com/kiing-dom/leetcode-tracker",
-      year: "2024",
-    },
-    {
-      title: "chordn8",
-      description:
-        "an AI web tool for extracting and visualizing chords from audio files, using a multi-stage ML pipeline. python backend with next.js frontend.",
+        "grammarly for brands",
       link: "https://medium.com/@dngi267/piano-lessons-from-an-ai-powered-chord-recognition-app-994a1b71c905",
-      year: "2024",
-    },
-    {
-      title: "Perpetua",
-      description:
-        "a modern note taking application with a handcrafted rich-text editor, markdown support, syntax highlighting and voice note recording.",
-      link: "https://github.com/kiing-dom/spotify-insights",
-      year: "2024",
+      year: "2025",
     },
   ];
 
