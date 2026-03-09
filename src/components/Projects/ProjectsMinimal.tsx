@@ -7,7 +7,7 @@ const ProjectsMinimal = () => {
     {
       title: "url shortener",
       description: "a url shortener written in go, scaled with kubernetes and redis",
-      link: "https://github.com/kiing-dom/cuhlippa",
+      link: "https://github.com/kiing-dom/url-shortener-go",
       year: "2026",
     },
     {
@@ -21,7 +21,7 @@ const ProjectsMinimal = () => {
       title: "brandalyze",
       description:
         "grammarly for brands",
-      link: "https://medium.com/@dngi267/piano-lessons-from-an-ai-powered-chord-recognition-app-994a1b71c905",
+      link: "https://brandalyze.io",
       year: "2025",
     },
   ];
