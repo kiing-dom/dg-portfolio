@@ -16,15 +16,47 @@ const ReadingList = () => {
       ) : (
         <>
           <div>
-            {/* {books.slice(0, 2).map((book) =>(
-                            <div key={book.dateCompleted}></div>
-                        ))} */}
-            {/* {articles.slice(0, 2).map((book) =>(
-                            <div key={book.dateCompleted}></div>
-                        ))} */}
-            {/* {papers.slice(0, 2).map((book) =>(
-                            <div key={book.dateCompleted}></div>
-                        ))} */}
+            {books.length > 0 ? (
+              books.slice(0, 2).map((book) => (
+                <div key={book.dateCompleted?.toISOString()}>
+                  &gt;&nbsp;
+                  <Link
+                    href={book.link}
+                    className="underline decoration-gray-600 dark:decoration-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    {book.title} - {book.author}
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p></p>
+            )}
+            {articles.length > 0 ? (
+              articles.slice(0, 2).map((article) => (
+                <div key={article.dateCompleted?.toISOString()}>
+                  &gt;&nbsp;
+                  <Link
+                    href={article.link}
+                    className="underline decoration-gray-600 dark:decoration-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    {article.title} - {article.author}
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p></p>
+            )}
+            {papers.slice(0, 2).map((paper) => (
+              <div key={paper.dateCompleted?.toISOString()}>
+                &gt;&nbsp;
+                <Link
+                  href={paper.link}
+                  className="underline decoration-gray-600 dark:decoration-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                >
+                  {paper.title} - {paper.author}
+                </Link>
+              </div>
+            ))}
           </div>
           <p className="text-xs text-gray-600 dark:text-white mt-2">
             <Link href="/reading-list" className="underline hover:no-underline">
