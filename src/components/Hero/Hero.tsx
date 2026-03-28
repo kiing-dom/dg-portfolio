@@ -9,21 +9,29 @@ const Hero: React.FC = () => {
         <p>I'm a developer living in Ireland.</p>
 
         <p>
-          Spend basically all my time working on projects I think are cool, reading books, writing and playing music.
+          I spend my time working on projects I find interesting, reading
         </p>
 
         <p>
-          you can find some of my work in the{" "}
-          <a href="#projects" className="underline hover:no-underline">
+          You can find some of my work in the{" "}
+          <a href="#projects" className="underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors">
             projects section
           </a>
           .
         </p>
 
         <p>
-          always interested in connecting with other developers and learning
-          about interesting projects. if you want to chat about tech or
-          potential collaborations, feel free to reach out.
+          Always interested in connecting with other developers and learning
+          about interesting projects. If you want to chat about tech or
+          potential collaborations, feel free to reach out through email or on&nbsp;
+          <a 
+            href="https://twitter.com/_dngi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors"
+          >
+            Twitter
+          </a>.
         </p>
 
         <p className="text-sm">

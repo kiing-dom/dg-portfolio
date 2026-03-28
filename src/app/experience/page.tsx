@@ -49,9 +49,9 @@ export default function ExperiencePage() {
         {/* Header */}
         <div className="mb-16">
           <h1 className="text-7xl font-bold text-black dark:text-white mb-4 tracking-tight">
-            Experience
+            experience.
           </h1>
-          <p className="text-black dark:text-white font-semibold text-lg uppercase">
+          <p className="text-black dark:text-white font-semibold text-lg">
             where i&apos;ve worked
           </p>
         </div>

@@ -6,7 +6,7 @@ export const experiences = [
     position: "Software Engineer",
     company: "Google",
     duration: "Feb 2026 - Present",
-    description: ""
+    description: "currently in team matching"
   },
   {
     position: "Software Engineer",

@@ -5,24 +5,23 @@ import React from "react";
 const ProjectsMinimal = () => {
   const projects = [
     {
-      title: "url shortener",
-      description: "a url shortener written in go, scaled with kubernetes and redis",
-      link: "https://github.com/kiing-dom/url-shortener-go",
-      year: "2026",
+      title: "Tau",
+      description: "building the #1 timelapse app in the world. currently at $20 revenue",
+      link: "https://trytau.app",
+      year: "2026"
     },
     {
       title: "fuzc",
       description:
-        "a fuzzy finder for comments written in rust",
+      "a fuzzy finder for comments written in rust",
       link: "https://github.com/kiing-dom/fuzc",
       year: "2025",
     },
     {
-      title: "brandalyze",
-      description:
-        "grammarly for brands",
-      link: "https://brandalyze.io",
-      year: "2025",
+      title: "url shortener",
+      description: "a url shortener written in go, scaled with kubernetes and redis",
+      link: "https://github.com/kiing-dom/url-shortener-go",
+      year: "2026",
     },
   ];
 

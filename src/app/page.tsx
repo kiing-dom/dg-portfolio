@@ -5,6 +5,7 @@ import Blog from "@/components/Blog/BlogMinimal";
 import Footer from "@/components/ui/FooterMinimal";
 import Navbar from "@/components/ui/Navbar";
 import type { Metadata } from "next";
+import ReadingList from "@/components/ReadingList/ReadingList";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -52,6 +53,10 @@ export default function Home() {
 
             <section id="experience">
               <Experience />
+            </section>
+
+            <section id="reading-list">
+              <ReadingList />
             </section>
           </div>
           {/* Right Column */}

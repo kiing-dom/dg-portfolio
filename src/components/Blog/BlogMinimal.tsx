@@ -95,9 +95,7 @@ const BlogMinimal = () => {
 
       <div className="space-y-6">
         <p className="text-xs text-gray-600 dark:text-gray-300 leading-relaxed">
-          sometimes i write about building things, lessons learned from failed
-          projects, or interesting tech discoveries. mostly focused on practical
-          stuff that other developers might find useful.
+          blogs topics range from technical, financial, personal, to just random thoughts
         </p>
         <div className="space-y-6">{blogContent}</div>
         <p className="text-xs text-gray-500 dark:text-white mt-2">
