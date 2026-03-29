@@ -32,23 +32,28 @@ export default function ReadingListPage() {
           <p>adding stuff soon.</p>
         ) : (
           <div>
-            <h2 className="text-2xl font-bold">books.</h2>
-            {books.length > 0 ? (
-              books.slice(0, 2).map((book) => (
-                <div key={book.dateCompleted?.toISOString()}>
-                  &gt;&nbsp;
-                  <Link
-                    href={book.link}
-                    className="underline decoration-gray-600 dark:decoration-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
-                  >
-                    {book.title} - {book.author}
-                  </Link>
-                </div>
-              ))
-            ) : (
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">I'm reading some books rn dw.</p>
-            )}
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold">books.</h2>
+              {books.length > 0 ? (
+                books.slice(0, 2).map((book) => (
+                  <div key={book.dateCompleted?.toISOString()}>
+                    &gt;&nbsp;
+                    <Link
+                      href={book.link}
+                      className="underline decoration-gray-600 dark:decoration-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
+                    >
+                      {book.title} - {book.author}
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                  I'm reading some books rn dw.
+                </p>
+              )}
+            </div>
 
+            <div className="mb-4">
             <h2 className="text-2xl font-bold">articles.</h2>
             {articles.length > 0 ? (
               articles.slice(0, 2).map((article) => (
@@ -57,14 +62,17 @@ export default function ReadingListPage() {
                   <Link
                     href={article.link}
                     className="underline decoration-gray-600 dark:decoration-gray-300 hover:text-gray-600 dark:hover:text-gray-300"
-                  >
+                    >
                     {article.title} - {article.author}
                   </Link>
                 </div>
               ))
             ) : (
-              <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">reading some articles too.</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                reading some articles too.
+              </p>
             )}
+            </div>
 
             <h2 className="text-2xl font-bold">papers.</h2>
             {papers.map((paper) => (
