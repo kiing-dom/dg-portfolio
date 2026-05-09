@@ -14,7 +14,7 @@ export default function FooterMinimal() {
           >
             dom1gbadamosi@gmail.com
           </a>.
-           i usually respond to every email as long as it's short and to the point.
+           i usually respond to every email as long as it&apos;s short and to the point.
         </p>
         <p className="text-sm">
           &copy; {new Date().getFullYear()} dominion gbadamosi
