@@ -1,4 +1,4 @@
-import Experience from "@/components/Experience/ExperienceMinimal";
+﻿import Experience from "@/components/Experience/ExperienceMinimal";
 import Hero from "@/components/Hero/Hero";
 import Projects from "@/components/Projects/ProjectsMinimal";
 import Blog from "@/components/Blog/BlogMinimal";
@@ -9,7 +9,7 @@ import ReadingList from "@/components/ReadingList/ReadingList";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog documenting the journey from €0 → €10k MRR.",
+  description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog documenting the journey from â‚¬0 â†’ â‚¬10k MRR.",
   openGraph: {
     title: "Dominion Gbadamosi - Software Engineer & Founder",
     description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog.",
@@ -55,7 +55,7 @@ export default function Home() {
               <Experience />
             </section>
 
-            <section id="reading-list">
+            <section id="recommendations">
               <ReadingList />
             </section>
           </div>
@@ -75,3 +75,4 @@ export default function Home() {
     </main>
   );
 }
+

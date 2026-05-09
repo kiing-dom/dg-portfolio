@@ -2,28 +2,18 @@
 import React from "react";
 
 const Hero: React.FC = () => {
+  const bibleVerseLink = "https://www.biblegateway.com/passage/?search=Proverbs%2013%3A4&version=NIV";
   return (
     <div className="pb-8">
       {/* Bio text */}
       <div className="text-xl leading-relaxed text-black dark:text-white space-y-2 max-w-none">
-        <p>I'm a developer living in Ireland.</p>
 
         <p>
-          I spend my time working on projects I find interesting, reading
+          Living to satisfy my curiosity. <span onClick={() => window.open(bibleVerseLink, '_blank')} className="text-sm italic hover:underline hover:cursor-pointer">(Proverbs 13:4)</span>
         </p>
 
         <p>
-          You can find some of my work in the{" "}
-          <a href="#projects" className="underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors">
-            projects section
-          </a>
-          .
-        </p>
-
-        <p>
-          Always interested in connecting with other developers and learning
-          about interesting projects. If you want to chat about tech or
-          potential collaborations, feel free to reach out through email or on&nbsp;
+          If you want to reach me, please do it through email or on{" "}
           <a 
             href="https://twitter.com/_dngi"
             target="_blank"
@@ -35,7 +25,7 @@ const Hero: React.FC = () => {
         </p>
 
         <p className="text-sm">
-          you can find me on{" "}
+          you can also find me on{" "}
           <a
             href="https://github.com/kiing-dom"
             target="_blank"

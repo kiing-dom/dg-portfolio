@@ -5,31 +5,34 @@ import React from "react";
 const ProjectsMinimal = () => {
   const projects = [
     {
+      title: "luttie",
+      description:
+        "building a web alternative for color grading + LUT creation. ~130 user currently",
+      link: "https://luttie.app",
+      year: 2026
+    },
+    {
       title: "Tau",
-      description: "building the #1 timelapse app in the world. currently at $20 revenue",
+      description:
+        "building the #1 timelapse app in the world. currently at ~$40 revenue",
       link: "https://trytau.app",
-      year: "2026"
+      year: "2026",
     },
     {
       title: "fuzc",
-      description:
-      "a fuzzy finder for comments written in rust",
+      description: "a fuzzy finder for comments written in rust",
       link: "https://github.com/kiing-dom/fuzc",
       year: "2025",
-    },
-    {
-      title: "url shortener",
-      description: "a url shortener written in go, scaled with kubernetes and redis",
-      link: "https://github.com/kiing-dom/url-shortener-go",
-      year: "2026",
     },
   ];
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-black dark:text-white mb-8">projects.</h2>
+      <h2 className="text-2xl font-bold text-black dark:text-white mb-8">
+        projects.
+      </h2>
 
-      <div className="space-y-8">
+      <div className="space-y-2">
         {projects.map((project) => (
           <div key={project.title} className="space-y-2">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
@@ -43,7 +46,9 @@ const ProjectsMinimal = () => {
                   {project.title}
                 </a>
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">{project.year}</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {project.year}
+              </p>
             </div>
             <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
               {project.description}

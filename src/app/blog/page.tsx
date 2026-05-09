@@ -67,7 +67,7 @@ export default async function BlogsPage() {
               <div className="text-gray-500 dark:text-gray-400 text-xs mt-1 flex items-center gap-2">
                 {blog.date}{" "}
                 <span>
-                  <ViewCounter slug={blog.slug} />
+                  <ViewCounter slug={blog.slug} incrementOnView={false} />
                 </span>
               </div>
               <p className="text-black dark:text-white text-sm mt-1 line-clamp-2">
