@@ -1,29 +1,7 @@
 {
-  "env": {
-    "browser": true,
-    "es2021": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": [
-    "react",
-    "react-hooks",
-    "@typescript-eslint"
-  ],
+  "extends": ["next/core-web-vitals"],
   "rules": {
-    "react-hooks/rules-of-hooks": "off",  // Disable the rules of hooks
-    "react-hooks/exhaustive-deps": "warn" // Optionally, you can still use this rule to warn about missing dependencies
+    "react-hooks/rules-of-hooks": "off",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
