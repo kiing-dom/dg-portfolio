@@ -30,7 +30,6 @@ export default function Home() {
     <main className="bg-white dark:bg-black min-h-screen transition-colors">
       <Navbar />
       <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
-        {" "}
         {/* Large name header above everything */}
         <div className="mb-16">
           <h1 className="text-9xl font-bold text-black dark:text-white mb-4 tracking-tight select-none">
@@ -40,13 +39,13 @@ export default function Home() {
           <p className="text-black dark:text-white font-semibold mb-2 text-lg uppercase">
             Software Engineer, Founder
           </p>
-          <p className="text-black dark:text-white mb-0 text-sm uppercase">
+          <p className="text-black dark:text-white text-sm uppercase">
             aka dom, kiing dom, dngi
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Left Column */}
-          <div className="space-y-16">
+          <div className="space-y-8">
             <section id="hero">
               <Hero />
             </section>
