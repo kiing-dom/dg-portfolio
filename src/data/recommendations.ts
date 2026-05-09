@@ -57,8 +57,15 @@ export const videos: VideoItem[] = [
     title: "the fear of enjoying your life",
     channel: "alastair",
     videoId: "D5iywwlhRUA",
-    dateWatched: new Date("08/05/2026"),
+    dateWatched: new Date(2026, 5, 8),
     link: "https://www.youtube.com/watch?v=D5iywwlhRUA",
+  },
+  {
+    title: "MACHIAVELLI: Be the Wolf Among Sheep",
+    channel: "horse",
+    videoId: "dYRJmzYSTag",
+    dateWatched: new Date(2026, 5, 10),
+    link: "https://www.youtube.com/watch?v=dYRJmzYSTag"
   }
 ];
 
