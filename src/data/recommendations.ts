@@ -66,6 +66,13 @@ export const videos: VideoItem[] = [
     videoId: "dYRJmzYSTag",
     dateWatched: new Date(2026, 5, 10),
     link: "https://www.youtube.com/watch?v=dYRJmzYSTag"
+  },
+  {
+    title: "the privilege of failure",
+    channel: "verse creates",
+    videoId: "nKhQLb7HxDw",
+    dateWatched: new Date(2026, 5, 11),
+    link: "https://www.youtube.com/watch?v=nKhQLb7HxDw"
   }
 ];
 
