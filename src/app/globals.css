@@ -4,6 +4,11 @@
 
 @layer base {
   :root {
+    /* Link accent — #aa1e0f. The one knob to turn for link colour. */
+    --link: 6 84% 36%;
+    /* How strong the underline sits at rest, before hover. */
+    --link-underline-opacity: 0.55;
+
     --background: 0 0% 100%;
     --foreground: 240 10% 10%;
     --card: 0 0% 100%;
@@ -27,6 +32,10 @@
   }
 
   .dark {
+    /* #aa1e0f is too dark to read against black, so lift it here. */
+    --link: 6 78% 58%;
+    --link-underline-opacity: 0.7;
+
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
@@ -66,6 +75,33 @@
     font-size: 16px;
     letter-spacing: 0.01em;
     line-height: 1.7;
+  }
+}
+
+@layer components {
+  /*
+   * Content links: text and underline both carry the accent, with the
+   * underline sitting lighter until hover. Use this for anything in prose.
+   */
+  .link {
+    @apply underline decoration-1 underline-offset-2 transition-colors;
+    color: hsl(var(--link));
+    text-decoration-color: hsl(var(--link) / var(--link-underline-opacity));
+  }
+
+  .link:hover {
+    text-decoration-color: hsl(var(--link));
+  }
+
+  /*
+   * Chrome links (back links, "view all") — no underline at rest, accent on hover.
+   */
+  .link-quiet {
+    @apply transition-colors;
+  }
+
+  .link-quiet:hover {
+    color: hsl(var(--link));
   }
 }
 

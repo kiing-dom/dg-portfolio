@@ -171,7 +171,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               a: ({ href, children }) => (
                 <a
                   href={href}
-                  className="text-red-600 dark:text-red-400 hover:underline"
+                  className="link"
                   target={href?.startsWith("http") ? "_blank" : undefined}
                   rel={
                     href?.startsWith("http") ? "noopener noreferrer" : undefined
@@ -205,7 +205,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
         <Link
           href="/"
-          className="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+          className="text-sm text-gray-500 dark:text-gray-400 link-quiet"
         >
           &#8592; back to home
         </Link>

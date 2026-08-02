@@ -19,6 +19,8 @@ const config = {
     },
     extend: {
       colors: {
+        // Accent used for link underlines. Change --link in globals.css.
+        link: "hsl(var(--link) / <alpha-value>)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

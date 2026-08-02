@@ -27,7 +27,7 @@ const ReadingList = () => {
             {i > 0 && <span className="text-gray-300 dark:text-gray-700"> · </span>}
             <Link
               href={category.href}
-              className="underline hover:no-underline text-black dark:text-white"
+              className="link"
             >
               {category.label}
             </Link>

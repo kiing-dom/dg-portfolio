@@ -89,7 +89,7 @@ const BlogMinimal = () => {
           href="https://www.medium.com/@dngi267"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:no-underline"
+          className="link"
         >
           medium
         </a>

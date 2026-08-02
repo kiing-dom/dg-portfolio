@@ -25,7 +25,7 @@ export default function PageShell({
           {backHref ? (
             <Link
               href={backHref}
-              className="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+              className="text-sm text-gray-500 dark:text-gray-400 link-quiet"
             >
               &#8592; {backLabel}
             </Link>

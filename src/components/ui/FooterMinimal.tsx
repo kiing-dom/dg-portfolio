@@ -19,7 +19,7 @@ export default function FooterMinimal() {
         p.s: if you want to get in touch, email me at{" "}
         <a
           href="mailto:dom1gbadamosi@gmail.com"
-          className="underline hover:no-underline text-black dark:text-white"
+          className="link"
         >
           dom1gbadamosi@gmail.com
         </a>
@@ -36,7 +36,7 @@ export default function FooterMinimal() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline hover:no-underline text-black dark:text-white"
+              className="link"
             >
               {link.label}
             </a>

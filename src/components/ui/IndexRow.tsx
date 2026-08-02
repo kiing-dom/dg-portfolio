@@ -17,7 +17,12 @@ const rowClass =
   "-mx-2 px-2 py-2 rounded";
 
 const interactiveClass =
-  " transition-colors hover:bg-gray-100/70 dark:hover:bg-gray-900";
+  " group transition-colors hover:bg-gray-100/70 dark:hover:bg-gray-900";
+
+/** Only reacts when the row is a link — the `group` class gates it. */
+const titleClass =
+  "decoration-1 underline-offset-2 transition-colors " +
+  "group-hover:text-link group-hover:underline group-hover:decoration-link/70";
 
 export default function IndexRow({
   year,
@@ -34,7 +39,7 @@ export default function IndexRow({
         {year}
       </span>
       <span className="text-[15px] leading-6 text-black dark:text-white">
-        {title}
+        <span className={titleClass}>{title}</span>
         {detail && (
           <span className="text-gray-500 dark:text-gray-400"> — {detail}</span>
         )}

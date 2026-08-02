@@ -56,7 +56,7 @@ const ProjectsMinimal = () => {
           href="https://github.com/kiing-dom"
           target="_blank"
           rel="noopener noreferrer"
-          className="underline hover:no-underline"
+          className="link"
         >
           github
         </a>

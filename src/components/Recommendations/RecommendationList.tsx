@@ -42,7 +42,7 @@ export default function RecommendationList({
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline hover:no-underline text-black dark:text-white"
+                  className="link"
                 >
                   {label}
                 </a>

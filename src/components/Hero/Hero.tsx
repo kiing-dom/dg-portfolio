@@ -3,8 +3,7 @@ import React from "react";
 const bibleVerseLink =
   "https://www.biblegateway.com/passage/?search=Proverbs%2013%3A4&version=NIV";
 
-const linkClass =
-  "underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors text-black dark:text-white";
+const linkClass = "link";
 
 const Hero: React.FC = () => {
   return (
@@ -15,7 +14,7 @@ const Hero: React.FC = () => {
           href={bibleVerseLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-xs italic hover:underline"
+          className="text-xs italic link-quiet"
         >
           (Proverbs 13:4)
         </a>

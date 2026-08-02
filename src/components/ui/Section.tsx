@@ -26,7 +26,7 @@ export default function Section({
         {moreHref && (
           <Link
             href={moreHref}
-            className="text-xs text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+            className="text-xs text-gray-500 dark:text-gray-400 link-quiet"
           >
             {moreLabel} &#8594;
           </Link>
