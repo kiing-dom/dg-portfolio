@@ -5,11 +5,12 @@
 @layer base {
   :root {
     /* Link accent — #aa1e0f. The one knob to turn for link colour. */
-    --link: 6 84% 36%;
+    --link: 6 78% 58%;
     /* How strong the underline sits at rest, before hover. */
     --link-underline-opacity: 0.55;
 
-    --background: 0 0% 100%;
+    /* Plain hex — mapped with var() not hsl() in tailwind.config.ts */
+    --background: #F6F6F8;
     --foreground: 240 10% 10%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 10%;
@@ -36,7 +37,7 @@
     --link: 6 78% 58%;
     --link-underline-opacity: 0.7;
 
-    --background: 240 10% 3.9%;
+    --background: #070707;
     --foreground: 0 0% 98%;
 
     --card: 240 10% 3.9%;

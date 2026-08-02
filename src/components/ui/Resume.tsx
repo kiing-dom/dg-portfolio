@@ -63,7 +63,7 @@ const Resume: React.FC = () => {
           >
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-              <h2 className="text-lg font-medium text-black dark:text-white">Resume</h2>
+              <h2 className="text-sm font-medium text-black dark:text-white">Resume</h2>
               <div className="flex items-center gap-2">
                 <a
                   href={`https://drive.google.com/file/d/${GOOGLE_DRIVE_FILE_ID}/view`}

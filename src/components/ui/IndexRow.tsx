@@ -38,10 +38,13 @@ export default function IndexRow({
       <span className="text-sm tabular-nums text-gray-400 dark:text-gray-500">
         {year}
       </span>
-      <span className="text-[15px] leading-6 text-black dark:text-white">
-        <span className={titleClass}>{title}</span>
+      <span className="text-sm leading-6 text-black dark:text-white">
+        <span className={titleClass + " font-semibold"}>{title}</span>
         {detail && (
-          <span className="text-gray-500 dark:text-gray-400"> — {detail}</span>
+          <span className="font-normal text-gray-500 dark:text-gray-400">
+            {" "}
+            - {detail}
+          </span>
         )}
       </span>
       {meta && (

@@ -36,7 +36,7 @@ export default function ExperiencePage() {
   return (
     <PageShell backHref="/#experience">
       <header className="mb-8">
-        <h1 className="text-lg font-semibold text-black dark:text-white">
+        <h1 className="text-sm font-semibold text-black dark:text-white">
           experience.
         </h1>
         <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
@@ -48,7 +48,7 @@ export default function ExperiencePage() {
         {experiences.map((exp) => (
           <li key={`${exp.company}-${exp.position}`}>
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
-              <h2 className="text-[15px] text-black dark:text-white">
+              <h2 className="text-sm text-black dark:text-white">
                 <span className="font-semibold">{exp.position}</span>,{" "}
                 {exp.company}
               </h2>

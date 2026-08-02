@@ -15,7 +15,7 @@ export default function ReadingListPage() {
   return (
     <PageShell backHref="/">
       <header className="mb-8">
-        <h1 className="text-lg font-semibold text-black dark:text-white">
+        <h1 className="text-sm font-semibold text-black dark:text-white">
           recommended content.
         </h1>
         <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">

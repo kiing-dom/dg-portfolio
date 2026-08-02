@@ -6,13 +6,13 @@ const projects = [
   {
     title: "luttie",
     description:
-      "building a web alternative for color grading + LUT creation. ~130 user currently",
+      "building a web alternative for color grading + LUT creation. 3k+ users currently",
     link: "https://luttie.app",
     year: "2026",
     category: "Product",
   },
   {
-    title: "Tau",
+    title: "tau",
     description:
       "building the #1 timelapse app in the world. currently at ~$40 revenue",
     link: "https://trytau.app",
@@ -24,7 +24,7 @@ const projects = [
     description: "a fuzzy finder for comments written in rust",
     link: "https://github.com/kiing-dom/fuzc",
     year: "2025",
-    category: "Open source",
+    category: "Personal",
   },
 ];
 
@@ -56,7 +56,7 @@ const ProjectsMinimal = () => {
           href="https://github.com/kiing-dom"
           target="_blank"
           rel="noopener noreferrer"
-          className="link"
+          className="link font-semibold"
         >
           github
         </a>

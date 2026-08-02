@@ -85,7 +85,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <PageShell backHref="/blog" backLabel="back to blog">
       <header className="mb-8">
-        <h1 className="text-xl font-semibold text-black dark:text-white">
+        <h1 className="text-sm font-semibold text-black dark:text-white">
           {post.title}
         </h1>
         <div className="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
@@ -99,29 +99,29 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           <ViewCounter slug={post.slug} />
         </div>
         {post.description && (
-          <p className="mt-4 text-[15px] leading-7 text-gray-500 dark:text-gray-400">
+          <p className="mt-4 text-sm leading-7 text-gray-500 dark:text-gray-400">
             {post.description}
           </p>
         )}
       </header>
       {/* Post content */}
-      <article className="prose prose-gray dark:prose-invert max-w-none">
+      <article className="text-sm">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
             rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               h1: ({ children }) => (
-                <h1 className="text-2xl md:text-3xl font-bold text-black dark:text-white mt-8 mb-4 first:mt-0">
+                <h1 className="text-base font-semibold text-black dark:text-white mt-8 mb-3 first:mt-0">
                   {children}
                 </h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-xl md:text-2xl font-semibold text-black dark:text-white mt-8 mb-4">
+                <h2 className="text-sm font-semibold text-black dark:text-white mt-8 mb-3">
                   {children}
                 </h2>
               ),
               h3: ({ children }) => (
-                <h3 className="text-lg md:text-xl font-medium text-black dark:text-white mt-6 mb-3">
+                <h3 className="text-sm font-medium text-black dark:text-white mt-6 mb-2">
                   {children}
                 </h3>
               ),

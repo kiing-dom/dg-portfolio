@@ -24,7 +24,8 @@ const config = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
+        // Hex, so no hsl() wrapper. Costs the bg-background/50 opacity syntax.
+        background: "var(--background)",
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",

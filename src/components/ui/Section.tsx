@@ -20,7 +20,7 @@ export default function Section({
   return (
     <section id={id} className="mt-14">
       <div className="flex items-baseline justify-between mb-4">
-        <h2 className="text-[15px] font-semibold text-black dark:text-white">
+        <h2 className="text-sm font-semibold text-black dark:text-white">
           {title}
         </h2>
         {moreHref && (

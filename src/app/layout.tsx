@@ -96,9 +96,18 @@ export default function RootLayout({
     description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products."
   };
 
+  /*
+   * Runs before first paint so the theme class is on <html> by the time
+   * anything renders. Without it, ThemeProvider's useEffect applies the class
+   * after paint and dark-mode users get a white flash. Keep the storage key in
+   * sync with ThemeProvider.
+   */
+  const themeScript = `(function(){try{var t=localStorage.getItem('portfolio-theme')||'system';var d=t==='dark'||(t==='system'&&window.matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.add(d?'dark':'light');}catch(e){}})();`;
+
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

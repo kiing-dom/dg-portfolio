@@ -2,12 +2,25 @@ import React from 'react';
 import IndexRow from '@/components/ui/IndexRow';
 import Section from '@/components/ui/Section';
 
-export const experiences = [
+type Experience = {
+  position: string;
+  company: string;
+  duration: string;
+  description?: string;
+}
+
+export const experiences: Experience[] = [
   {
     position: "Software Engineer",
     company: "Google",
     duration: "Feb 2026 - Present",
     description: "currently in team matching"
+  },
+  {
+    position: "Founder/Software Engineer",
+    company: "Iwaju Labs",
+    duration: "Nov 2025 - Present",
+    description: "hub for all the personal project I'm shipping"
   },
   {
     position: "Software Engineer",
@@ -18,7 +31,7 @@ export const experiences = [
   {
     position: "AI Data Analyst",
     company: "TransPerfect",
-    duration: "Jan 2025 - Current",
+    duration: "Jan 2025 - Jun 2025",
     description: "contributing to confidential machine learning and data-driven initiatives for a private client through a third-party contractor."
   },
   {
@@ -45,7 +58,7 @@ export const experiences = [
 export function splitDuration(duration: string) {
   const [from, to] = duration.split(" - ");
   const parts = from.trim().split(" ");
-  return { start: parts[parts.length - 1], end: (to ?? "").trim() };
+  return { start: parts.at(-1)!, end: (to ?? "").trim() };
 }
 
 const ExperienceMinimal = () => {
