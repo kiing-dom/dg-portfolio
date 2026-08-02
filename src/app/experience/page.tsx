@@ -1,5 +1,4 @@
-import Navbar from "@/components/ui/Navbar";
-import Link from "next/link";
+import PageShell from "@/components/ui/PageShell";
 import { experiences } from "@/components/Experience/ExperienceMinimal";
 import type { Metadata } from "next";
 
@@ -35,62 +34,34 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <main className="bg-white dark:bg-black min-h-screen transition-colors">
-      <Navbar />
-      <div className="max-w-4xl mx-auto px-6 py-8 pt-24">
-        {/* Back link */}
-        <Link
-          href="/#experience"
-          className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:underline hover:text-black dark:hover:text-white transition-colors mb-8"
-        >
-          ← back to home
-        </Link>
+    <PageShell backHref="/#experience">
+      <header className="mb-8">
+        <h1 className="text-lg font-semibold text-black dark:text-white">
+          experience.
+        </h1>
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          where i&apos;ve worked
+        </p>
+      </header>
 
-        {/* Header */}
-        <div className="mb-16">
-          <h1 className="text-7xl font-bold text-black dark:text-white mb-4 tracking-tight">
-            experience.
-          </h1>
-          <p className="text-black dark:text-white font-semibold text-lg">
-            where i&apos;ve worked
-          </p>
-        </div>
-
-        {/* Experience list */}
-        <ul className="space-y-10">
-          {experiences.map((exp) => (
-            <li
-              key={`${exp.company}-${exp.position}`}
-              className="border-b border-gray-200 dark:border-gray-800 pb-8 last:border-0"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
-                <h2 className="text-lg font-medium text-black dark:text-white">
-                  <span className="font-bold">{exp.position}</span> at{" "}
-                  <span className="underline decoration-gray-300 dark:decoration-gray-600">
-                    {exp.company}
-                  </span>
-                </h2>
-                <p className="text-sm text-gray-600 dark:text-gray-400 shrink-0">
-                  {exp.duration}
-                </p>
-              </div>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm">
-                {exp.description}
+      <ul className="space-y-8">
+        {experiences.map((exp) => (
+          <li key={`${exp.company}-${exp.position}`}>
+            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-x-4">
+              <h2 className="text-[15px] text-black dark:text-white">
+                <span className="font-semibold">{exp.position}</span>,{" "}
+                {exp.company}
+              </h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400 shrink-0">
+                {exp.duration}
               </p>
-            </li>
-          ))}
-        </ul>
-
-        {/* Footer nav */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <Link
-            href="/#experience"
-            className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
-          >
-            ← back to home
-          </Link>
-        </div>
-      </div>
-    </main>
+            </div>
+            <p className="mt-1 text-sm leading-6 text-gray-500 dark:text-gray-400">
+              {exp.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </PageShell>
   );
 }

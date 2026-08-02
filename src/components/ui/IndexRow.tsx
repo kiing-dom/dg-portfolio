@@ -1,0 +1,72 @@
+import React from "react";
+import Link from "next/link";
+
+interface IndexRowProps {
+  /** Only shown on the first row of a year group, so the gutter reads as a spine. */
+  year?: string;
+  title: string;
+  /** Muted continuation of the title on the same line. */
+  detail?: string;
+  /** Right-aligned category or status. */
+  meta?: React.ReactNode;
+  href?: string;
+}
+
+const rowClass =
+  "grid grid-cols-[2.5rem_1fr] sm:grid-cols-[2.5rem_1fr_auto] gap-x-3 items-baseline " +
+  "-mx-2 px-2 py-2 rounded";
+
+const interactiveClass =
+  " transition-colors hover:bg-gray-100/70 dark:hover:bg-gray-900";
+
+export default function IndexRow({
+  year,
+  title,
+  detail,
+  meta,
+  href,
+}: IndexRowProps) {
+  const isExternal = href?.startsWith("http");
+
+  const inner = (
+    <>
+      <span className="text-sm tabular-nums text-gray-400 dark:text-gray-500">
+        {year}
+      </span>
+      <span className="text-[15px] leading-6 text-black dark:text-white">
+        {title}
+        {detail && (
+          <span className="text-gray-500 dark:text-gray-400"> — {detail}</span>
+        )}
+      </span>
+      {meta && (
+        <span className="col-start-2 sm:col-start-3 mt-0.5 sm:mt-0 text-xs sm:text-sm text-gray-500 dark:text-gray-400 sm:text-right whitespace-nowrap">
+          {meta}
+        </span>
+      )}
+    </>
+  );
+
+  if (!href) {
+    return <div className={rowClass}>{inner}</div>;
+  }
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={rowClass + interactiveClass}
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={rowClass + interactiveClass}>
+      {inner}
+    </Link>
+  );
+}

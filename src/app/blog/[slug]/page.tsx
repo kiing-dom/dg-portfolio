@@ -5,7 +5,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import Link from "next/link";
-import Navbar from "@/components/ui/Navbar";
+import PageShell from "@/components/ui/PageShell";
 import { ViewCounter } from "@/components/ViewCounter";
 import "katex/dist/katex.min.css";
 
@@ -83,39 +83,29 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
   return (
-    <div className="bg-white dark:bg-black min-h-screen transition-colors">
-      <Navbar />
-      <div className="max-w-4xl mx-auto px-4 py-8 pt-24">
-        {/* Back to blog link */}
-        <Link
-          href="/#blog"
-          className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors mb-8"
-        >
-          ← back to home
-        </Link>
-        {/* Post header */}
-        <header className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-black dark:text-white mb-4">
-            {post.title}
-          </h1>{" "}
-          <div className="flex items-center gap-4 text-gray-600 dark:text-gray-400">
-            <time dateTime={post.date}>
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-            <ViewCounter slug={post.slug} />
-          </div>
-          {post.description && (
-            <p className="text-lg text-gray-600 dark:text-gray-300 mt-4 leading-relaxed">
-              {post.description}
-            </p>
-          )}
-        </header>
-        {/* Post content */}
-        <article className="prose prose-gray dark:prose-invert max-w-none">
+    <PageShell backHref="/blog" backLabel="back to blog">
+      <header className="mb-8">
+        <h1 className="text-xl font-semibold text-black dark:text-white">
+          {post.title}
+        </h1>
+        <div className="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+          <time dateTime={post.date}>
+            {new Date(post.date).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </time>
+          <ViewCounter slug={post.slug} />
+        </div>
+        {post.description && (
+          <p className="mt-4 text-[15px] leading-7 text-gray-500 dark:text-gray-400">
+            {post.description}
+          </p>
+        )}
+      </header>
+      {/* Post content */}
+      <article className="prose prose-gray dark:prose-invert max-w-none">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
             rehypePlugins={[rehypeRaw, rehypeKatex]}
@@ -210,17 +200,16 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           >
             {post.content}
           </ReactMarkdown>
-        </article>
-        {/* Footer */}
-        <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-          <Link
-            href="/#blog"
-            className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
-          >
-            ← back to home{" "}
-          </Link>
-        </footer>
-      </div>
-    </div>
+      </article>
+      {/* Footer */}
+      <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <Link
+          href="/"
+          className="text-sm text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+        >
+          &#8592; back to home
+        </Link>
+      </footer>
+    </PageShell>
   );
 }

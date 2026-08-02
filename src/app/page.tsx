@@ -1,9 +1,9 @@
-﻿import Experience from "@/components/Experience/ExperienceMinimal";
+import Experience from "@/components/Experience/ExperienceMinimal";
 import Hero from "@/components/Hero/Hero";
 import Projects from "@/components/Projects/ProjectsMinimal";
 import Blog from "@/components/Blog/BlogMinimal";
 import Footer from "@/components/ui/FooterMinimal";
-import Navbar from "@/components/ui/Navbar";
+import PageShell from "@/components/ui/PageShell";
 import type { Metadata } from "next";
 import ReadingList from "@/components/ReadingList/ReadingList";
 
@@ -27,51 +27,24 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="bg-white dark:bg-black min-h-screen transition-colors">
-      <Navbar />
-      <div className="max-w-7xl mx-auto px-6 py-8 pt-24">
-        {/* Large name header above everything */}
-        <div className="mb-16">
-          <h1 className="text-9xl font-bold text-black dark:text-white mb-4 tracking-tight select-none">
-            DOMINION
-          </h1>
+    <PageShell>
+      <header id="hero" className="mb-8">
+        <h1 className="text-lg font-semibold text-black dark:text-white">
+          Dominion Gbadamosi
+        </h1>
+        <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+          Software Engineer, Founder · aka dom, kiing dom, dngi
+        </p>
+      </header>
 
-          <p className="text-black dark:text-white font-semibold mb-2 text-lg uppercase">
-            Software Engineer, Founder
-          </p>
-          <p className="text-black dark:text-white text-sm uppercase">
-            aka dom, kiing dom, dngi
-          </p>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left Column */}
-          <div className="space-y-8">
-            <section id="hero">
-              <Hero />
-            </section>
+      <Hero />
 
-            <section id="experience">
-              <Experience />
-            </section>
+      <Projects />
+      <Experience />
+      <Blog />
+      <ReadingList />
 
-            <section id="recommendations">
-              <ReadingList />
-            </section>
-          </div>
-          {/* Right Column */}
-          <div className="space-y-16">
-            <section id="projects">
-              <Projects />
-            </section>
-
-            <section id="blog">
-              <Blog />
-            </section>
-          </div>
-        </div>
-        <Footer />
-      </div>
-    </main>
+      <Footer />
+    </PageShell>
   );
 }
-

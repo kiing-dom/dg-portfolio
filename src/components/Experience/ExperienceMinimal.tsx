@@ -1,5 +1,6 @@
 import React from 'react';
-import Link from 'next/link';
+import IndexRow from '@/components/ui/IndexRow';
+import Section from '@/components/ui/Section';
 
 export const experiences = [
   {
@@ -40,36 +41,36 @@ export const experiences = [
   }
 ];
 
+/** "Feb 2026 - Present" -> { start: "2026", end: "Present" } */
+export function splitDuration(duration: string) {
+  const [from, to] = duration.split(" - ");
+  const parts = from.trim().split(" ");
+  return { start: parts[parts.length - 1], end: (to ?? "").trim() };
+}
+
 const ExperienceMinimal = () => {
   const preview = experiences.slice(0, 3);
+  let lastYear = "";
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-black dark:text-white">experience.</h2>
-      <div className="space-y-8">
-        {preview.map((exp) => (
-          <div key={`${exp.company}-${exp.position}`} className="space-y-2">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <h3 className="text-lg font-medium text-black dark:text-white">
-                <span className="font-bold">{exp.position}</span> at{" "}
-                <span className="underline decoration-gray-300 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-white transition-colors">
-                  {exp.company}
-                </span>
-              </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">{exp.duration}</p>
-            </div>
-            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-              {exp.description}
-            </p>
-          </div>
-        ))}
+    <Section id="experience" title="experience." moreHref="/experience">
+      <div>
+        {preview.map((exp) => {
+          const { start, end } = splitDuration(exp.duration);
+          const year = start === lastYear ? undefined : start;
+          lastYear = start;
+
+          return (
+            <IndexRow
+              key={`${exp.company}-${exp.position}`}
+              year={year}
+              title={`${exp.position}, ${exp.company}`}
+              meta={end}
+            />
+          );
+        })}
       </div>
-      <p className="text-xs text-gray-500 dark:text-white mt-2">
-        <Link href="/experience" className="underline hover:no-underline">
-          View all experience &#8594;
-        </Link>
-      </p>
-    </div>
+    </Section>
   );
 };
 
