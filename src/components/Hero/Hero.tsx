@@ -23,10 +23,10 @@ const Hero: React.FC = () => {
       </p>
 
       <p>
-        I&apos;m a software engineer based Ireland. I just really enjoy building software so whenever I have an idea for a project I go all in.
+        i&apos;m a software engineer based Ireland. i just really enjoy building software so whenever i have an idea for a project i go all in.
       </p>
       <p>
-        If you want to reach me, please do it through{" "}
+        if you want to reach me, please do it through{" "}
         <HoverPreviewLink
           href="mailto:dom1gbadamosi@gmail.com"
           className={linkClass}
@@ -42,13 +42,13 @@ const Hero: React.FC = () => {
           className={linkClass}
           preview={previews.twitter}
         >
-          Twitter
+          twitter
         </HoverPreviewLink>
         {"."}
       </p>
 
       <p>
-        You can also find me on{" "}
+        you can also find me on{" "}
         <HoverPreviewLink
           href="https://github.com/kiing-dom"
           target="_blank"

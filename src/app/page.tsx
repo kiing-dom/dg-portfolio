@@ -33,7 +33,7 @@ export default function Home() {
           Dominion Gbadamosi
         </h1>
         <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Software Engineer, Founder · aka dom, kiing dom, dngi
+          software engineer, founder · aka dom, kiing dom, dngi
         </p>
       </header>
 

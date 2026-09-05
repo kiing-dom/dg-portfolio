@@ -10,12 +10,11 @@ type Experience = {
 }
 
 export const experiences: Experience[] = [
-  {
-    position: "Software Engineer",
-    company: "Google",
-    duration: "Feb 2026 - Present",
-    description: "currently in team matching"
-  },
+  // {
+  //   position: "Software Engineer",
+  //   company: "Google",
+  //   duration: "Feb 2026 - Present",
+  // },
   {
     position: "Founder/Software Engineer",
     company: "Iwaju Labs",

@@ -46,7 +46,7 @@ export default function IndexRow({
         {year}
       </span>
       <span className="text-sm leading-6 text-black dark:text-white">
-        <span className={titleClass + " font-semibold"}>{title}</span>
+        <span className={titleClass}>{title}</span>
         {detail && (
           <span className="font-normal text-gray-500 dark:text-gray-400">
             {" "}
