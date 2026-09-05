@@ -1,5 +1,9 @@
 import React from "react";
 import Link from "next/link";
+import {
+  HoverPreviewLink,
+  type PreviewContent,
+} from "@/components/ui/HoverPreview";
 
 interface IndexRowProps {
   /** Only shown on the first row of a year group, so the gutter reads as a spine. */
@@ -10,6 +14,8 @@ interface IndexRowProps {
   /** Right-aligned category or status. */
   meta?: React.ReactNode;
   href?: string;
+  /** Optional cursor-following preview shown while the row is hovered. */
+  preview?: PreviewContent;
 }
 
 const rowClass =
@@ -30,6 +36,7 @@ export default function IndexRow({
   detail,
   meta,
   href,
+  preview,
 }: IndexRowProps) {
   const isExternal = href?.startsWith("http");
 
@@ -60,6 +67,20 @@ export default function IndexRow({
   }
 
   if (isExternal) {
+    if (preview) {
+      return (
+        <HoverPreviewLink
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={rowClass + interactiveClass}
+          preview={preview}
+        >
+          {inner}
+        </HoverPreviewLink>
+      );
+    }
+
     return (
       <a
         href={href}

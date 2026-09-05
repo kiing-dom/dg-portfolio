@@ -1,6 +1,7 @@
 import React from "react";
 import IndexRow from "@/components/ui/IndexRow";
 import Section from "@/components/ui/Section";
+import { previews } from "@/components/ui/previews";
 
 const projects = [
   {
@@ -10,6 +11,7 @@ const projects = [
     link: "https://luttie.app",
     year: "2026",
     category: "Product",
+    preview: previews.luttie,
   },
   {
     title: "tau",
@@ -18,6 +20,7 @@ const projects = [
     link: "https://trytau.app",
     year: "2026",
     category: "Product",
+    preview: previews.tau,
   },
   {
     title: "fuzc",
@@ -25,6 +28,7 @@ const projects = [
     link: "https://github.com/kiing-dom/fuzc",
     year: "2025",
     category: "Personal",
+    preview: previews.fuzc,
   },
 ];
 
@@ -46,6 +50,7 @@ const ProjectsMinimal = () => {
               detail={project.description}
               meta={project.category}
               href={project.link}
+              preview={project.preview}
             />
           );
         })}

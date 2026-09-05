@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { HoverPreviewProvider } from "@/components/ui/HoverPreview";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -116,7 +117,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider>
           <GoogleAnalytics />
-          {children}
+          <HoverPreviewProvider>{children}</HoverPreviewProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,4 +1,6 @@
 import React from "react";
+import { HoverPreviewLink } from "@/components/ui/HoverPreview";
+import { previews } from "@/components/ui/previews";
 
 const bibleVerseLink =
   "https://www.biblegateway.com/passage/?search=Proverbs%2013%3A4&version=NIV";
@@ -9,14 +11,15 @@ const Hero: React.FC = () => {
   return (
     <div className="space-y-3 text-sm leading-snug font-normal dark:text-gray-300">
       <p>
-        <a
+        <HoverPreviewLink
           href={bibleVerseLink}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs italic font-normal link-quiet"
+          preview={previews.bible}
         >
           (Proverbs 13:4)
-        </a>
+        </HoverPreviewLink>
       </p>
 
       <p>
@@ -24,49 +27,57 @@ const Hero: React.FC = () => {
       </p>
       <p>
         If you want to reach me, please do it through{" "}
-        <a href="mailto:dom1gbadamosi@gmail.com" className={linkClass}>
+        <HoverPreviewLink
+          href="mailto:dom1gbadamosi@gmail.com"
+          className={linkClass}
+          preview={previews.email}
+        >
           email
-        </a>{" "}
+        </HoverPreviewLink>{" "}
         or on{" "}
-        <a
+        <HoverPreviewLink
           href="https://twitter.com/_dngi"
           target="_blank"
           rel="noopener noreferrer"
           className={linkClass}
+          preview={previews.twitter}
         >
           Twitter
-        </a>
+        </HoverPreviewLink>
         {"."}
       </p>
 
       <p>
         You can also find me on{" "}
-        <a
+        <HoverPreviewLink
           href="https://github.com/kiing-dom"
           target="_blank"
           rel="noopener noreferrer"
           className={linkClass}
+          preview={previews.github}
         >
           github
-        </a>
+        </HoverPreviewLink>
         {", "}
-        <a
+        <HoverPreviewLink
           href="https://www.linkedin.com/in/dominion-gbadamosi"
           target="_blank"
           rel="noopener noreferrer"
           className={linkClass}
+          preview={previews.linkedin}
         >
           linkedin
-        </a>
+        </HoverPreviewLink>
         {", or "}
-        <a
+        <HoverPreviewLink
           href="https://www.medium.com/@dngi267"
           target="_blank"
           rel="noopener noreferrer"
           className={linkClass}
+          preview={previews.medium}
         >
           medium
-        </a>
+        </HoverPreviewLink>
         {"."}
       </p>
     </div>
