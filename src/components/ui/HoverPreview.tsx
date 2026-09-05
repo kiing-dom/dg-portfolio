@@ -6,27 +6,21 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 import Image from "next/image";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-  useTransform,
-  type MotionValue,
-} from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 /**
- * A cursor-following preview card, in the spirit of the Framer
- * HoverImageReveal component but driven by real link targets: site
- * screenshots for pages, an icon + label card for things that have no
- * meaningful screenshot (mailto:, or hosts that block logged-out capture).
+ * A tooltip-style hover preview: a speech bubble that opens directly above the
+ * hovered link, with a tail pointing down at it.
  *
- * One card is shared by every link on the page — links only publish which
- * preview to show, so hovering twenty links still costs one motion subtree.
+ * Previews are either a site screenshot (wide card) or, for links with no
+ * meaningful screenshot — mailto:, and hosts that block logged-out capture —
+ * a square icon card.
+ *
+ * One bubble is shared by every link on the page; links only publish which
+ * preview to show and where they are, so twenty links cost one motion subtree.
  */
 
 export type PreviewKind = "image" | "icon";
@@ -43,29 +37,44 @@ export interface PreviewContent {
   sublabel?: string;
 }
 
-const CARD_W = 280;
-const CARD_H = 176;
+/** Screenshots keep a 16:10 frame; icon cards are square. */
+const IMAGE_W = 260;
+const IMAGE_H = 163;
+const ICON_SIZE = 168;
 
-/**
- * Springs are deliberately loose so the card trails the cursor and overshoots
- * a little on direction changes — that lag is what the tilt is derived from.
- */
-const FOLLOW_SPRING = { stiffness: 260, damping: 26, mass: 0.7 };
-/** Rotation lags further behind again, so the card banks into the turn. */
-const TILT_SPRING = { stiffness: 150, damping: 18, mass: 0.6 };
+/** Gap between the tail tip and the top of the link. */
+const TAIL_GAP = 10;
+const TAIL_W = 12;
+/** Keeps the bubble off the viewport edges. */
+const EDGE_PAD = 12;
+
+const sizeOf = (c: PreviewContent) =>
+  c.kind === "icon"
+    ? { w: ICON_SIZE, h: ICON_SIZE }
+    : { w: IMAGE_W, h: IMAGE_H };
+
+/** Where the bubble sits, resolved from the link's rect at hover time. */
+interface Anchor {
+  /** Bubble's top-left, in viewport coords. */
+  left: number;
+  top: number;
+  /** Tail's horizontal centre, relative to the bubble's left edge. */
+  tailX: number;
+  /** Tail below the bubble (normal) or above it (bubble flipped under). */
+  flipped: boolean;
+}
 
 interface PreviewCtx {
-  show: (content: PreviewContent) => void;
+  show: (content: PreviewContent, el: HTMLElement) => void;
   hide: () => void;
-  /** Null until the provider has mounted; links stay inert without it. */
   active: boolean;
 }
 
 const HoverPreviewContext = createContext<PreviewCtx | null>(null);
 
 /**
- * Coarse pointers get no preview at all — there is no hover to speak of, and
- * a card chasing a tap is noise. Also respects reduced-motion.
+ * Coarse pointers get no preview — there is no hover to speak of. Also
+ * respects reduced-motion.
  */
 function useSupportsHover() {
   const [ok, setOk] = useState(false);
@@ -88,6 +97,43 @@ function useSupportsHover() {
   return ok;
 }
 
+/**
+ * Positions the bubble over a link: centred on it, above it by default,
+ * clamped to the viewport with the tail sliding to stay on the link.
+ */
+function anchorTo(el: HTMLElement, content: PreviewContent): Anchor {
+  /*
+   * An inline link that wraps across lines has a tall bounding rect spanning
+   * both, which would centre the bubble over the gap. Use the first client
+   * rect — the fragment on the first line — so it points at real text.
+   */
+  const rects = el.getClientRects();
+  const r = rects.length > 0 ? rects[0] : el.getBoundingClientRect();
+  const { w, h } = sizeOf(content);
+  const centre = r.left + r.width / 2;
+
+  const left = Math.max(
+    EDGE_PAD,
+    Math.min(centre - w / 2, window.innerWidth - w - EDGE_PAD)
+  );
+
+  // Prefer above; drop below only when there isn't room up there.
+  const above = r.top - h - TAIL_GAP;
+  const flipped = above < EDGE_PAD;
+  const top = flipped ? r.bottom + TAIL_GAP : above;
+
+  /*
+   * The bubble may have been clamped away from the link's centre, so the tail
+   * tracks the link independently — kept inside the bubble's rounded corners.
+   */
+  const tailX = Math.max(
+    TAIL_W,
+    Math.min(centre - left, w - TAIL_W)
+  );
+
+  return { left, top, tailX, flipped };
+}
+
 export function HoverPreviewProvider({
   children,
 }: {
@@ -95,43 +141,12 @@ export function HoverPreviewProvider({
 }) {
   const enabled = useSupportsHover();
   const [content, setContent] = useState<PreviewContent | null>(null);
-
-  // Raw pointer position; the springs below chase these.
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, FOLLOW_SPRING);
-  const springY = useSpring(y, FOLLOW_SPRING);
-
-  /*
-   * Tilt comes from horizontal lag: how far the spring is behind the cursor.
-   * Moving right leaves the card to the left of the pointer (negative delta)
-   * so we negate to bank the leading edge upward. Clamped to keep fast flicks
-   * from spinning the card.
-   */
-  const lag = useTransform<number, number>(
-    [x, springX],
-    ([cursor, trailing]) => {
-      const delta = cursor - trailing;
-      return Math.max(-28, Math.min(28, delta * 0.55));
-    }
-  );
-  const rotate = useSpring(lag, TILT_SPRING);
-
-  useEffect(() => {
-    if (!enabled) return;
-
-    const onMove = (e: PointerEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-    };
-
-    window.addEventListener("pointermove", onMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onMove);
-  }, [enabled, x, y]);
+  const [anchor, setAnchor] = useState<Anchor | null>(null);
 
   const show = useCallback(
-    (next: PreviewContent) => {
+    (next: PreviewContent, el: HTMLElement) => {
       if (!enabled) return;
+      setAnchor(anchorTo(el, next));
       setContent(next);
     },
     [enabled]
@@ -140,20 +155,20 @@ export function HoverPreviewProvider({
   const hide = useCallback(() => setContent(null), []);
 
   /*
-   * On the first reveal the springs still hold the previous link's position,
-   * which would send the card flying across the page. Snap them to the cursor
-   * before it becomes visible.
+   * The bubble is fixed-positioned against a rect measured at hover time, so
+   * scrolling or resizing would leave it stranded. Cheaper to dismiss it than
+   * to track the link.
    */
-  const wasVisible = useRef(false);
   useEffect(() => {
-    const visible = content !== null;
-    if (visible && !wasVisible.current) {
-      springX.jump(x.get());
-      springY.jump(y.get());
-      rotate.jump(0);
-    }
-    wasVisible.current = visible;
-  }, [content, springX, springY, rotate, x, y]);
+    if (!content) return;
+
+    window.addEventListener("scroll", hide, { passive: true });
+    window.addEventListener("resize", hide);
+    return () => {
+      window.removeEventListener("scroll", hide);
+      window.removeEventListener("resize", hide);
+    };
+  }, [content, hide]);
 
   const ctx = useMemo(
     () => ({ show, hide, active: enabled }),
@@ -163,85 +178,68 @@ export function HoverPreviewProvider({
   return (
     <HoverPreviewContext.Provider value={ctx}>
       {children}
-      {enabled && (
-        <PreviewCard
-          content={content}
-          x={springX}
-          y={springY}
-          rotate={rotate}
-        />
-      )}
+      {enabled && <PreviewBubble content={content} anchor={anchor} />}
     </HoverPreviewContext.Provider>
   );
 }
 
-function PreviewCard({
+function PreviewBubble({
   content,
-  x,
-  y,
-  rotate,
+  anchor,
 }: {
   content: PreviewContent | null;
-  x: MotionValue<number>;
-  y: MotionValue<number>;
-  rotate: MotionValue<number>;
+  anchor: Anchor | null;
 }) {
-  /*
-   * Keep the card inside the viewport: it sits above-right of the cursor by
-   * default, and flips to the other side near an edge rather than clipping.
-   */
-  const left = useTransform(x, (v) => {
-    const ideal = v + 24;
-    const maxLeft = window.innerWidth - CARD_W - 12;
-    return Math.max(12, Math.min(ideal, maxLeft));
-  });
-
-  const top = useTransform(y, (v) => {
-    const ideal = v - CARD_H - 20;
-    // Not enough room above — drop it below the cursor instead.
-    return ideal < 12 ? Math.min(v + 28, window.innerHeight - CARD_H - 12) : ideal;
-  });
+  const size = content ? sizeOf(content) : null;
 
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-50 overflow-hidden"
-    >
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-50">
       <AnimatePresence>
-        {content && (
+        {content && anchor && size && (
           <motion.div
             key={content.src ?? content.label ?? "preview"}
             style={{
-              left,
-              top,
-              rotate,
-              width: CARD_W,
-              height: CARD_H,
+              left: anchor.left,
+              top: anchor.top,
+              width: size.w,
             }}
-            className="absolute origin-center overflow-hidden rounded-lg border border-black/10 bg-white shadow-2xl shadow-black/25 dark:border-white/15 dark:bg-[#0d0d0d] dark:shadow-black/60"
-            initial={{ opacity: 0, scale: 0.86, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 6 }}
-            transition={{
-              type: "spring",
-              stiffness: 420,
-              damping: 32,
-              mass: 0.6,
-            }}
+            className="absolute"
+            /*
+             * Settles rather than bounces: a short tween on the way in, and a
+             * small rise from the link it belongs to.
+             */
+            initial={{ opacity: 0, y: anchor.flipped ? -6 : 6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: anchor.flipped ? -4 : 4, scale: 0.99 }}
+            transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
-            {content.kind === "image" && content.src ? (
-              <Image
-                src={content.src}
-                alt=""
-                width={CARD_W * 2}
-                height={CARD_H * 2}
-                // Top-anchored so the card shows the masthead, not the middle.
-                className="h-full w-full object-cover object-top"
-                priority={false}
+            <div className="relative rounded-xl border border-black/10 bg-white shadow-xl shadow-black/15 dark:border-white/15 dark:bg-[#0d0d0d] dark:shadow-black/50">
+              <div className="overflow-hidden rounded-xl">
+                {content.kind === "image" && content.src ? (
+                  <Image
+                    src={content.src}
+                    alt=""
+                    width={IMAGE_W * 2}
+                    height={IMAGE_H * 2}
+                    // Top-anchored so the card shows the masthead.
+                    className="block w-full object-cover object-top"
+                    style={{ height: size.h }}
+                    priority={false}
+                  />
+                ) : (
+                  <IconCard content={content} size={size.h} />
+                )}
+              </div>
+              <Tail
+                tailX={anchor.tailX}
+                flipped={anchor.flipped}
+                solid={
+                  content.kind === "icon"
+                    ? "bg-gray-200 dark:bg-[#0a0a0a]"
+                    : "bg-white dark:bg-[#0d0d0d]"
+                }
               />
-            ) : (
-              <IconCard content={content} />
-            )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -249,15 +247,55 @@ function PreviewCard({
   );
 }
 
-function IconCard({ content }: { content: PreviewContent }) {
+/**
+ * The speech-bubble tail. A rotated square rather than a border triangle, so
+ * it inherits the bubble's background and 1px border in both themes; the edge
+ * facing the bubble is covered by the bubble's own body.
+ */
+function Tail({
+  tailX,
+  flipped,
+  solid,
+}: {
+  tailX: number;
+  flipped: boolean;
+  /** Matches the card's own base so the join is seamless. */
+  solid: string;
+}) {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-gray-50 to-gray-200 px-5 text-center dark:from-[#161616] dark:to-[#0a0a0a]">
+    <span
+      className={
+        "absolute h-3 w-3 rotate-45 border-black/10 dark:border-white/15 " + solid
+      }
+      style={{
+        left: tailX,
+        marginLeft: -6,
+        ...(flipped
+          ? { top: -6, borderLeftWidth: 1, borderTopWidth: 1 }
+          : { bottom: -6, borderRightWidth: 1, borderBottomWidth: 1 }),
+      }}
+    />
+  );
+}
+
+function IconCard({
+  content,
+  size,
+}: {
+  content: PreviewContent;
+  size: number;
+}) {
+  return (
+    <div
+      style={{ height: size }}
+      className="flex w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-gray-50 to-gray-200 px-4 text-center dark:from-[#161616] dark:to-[#0a0a0a]"
+    >
       <div className="text-link [&>svg]:h-7 [&>svg]:w-7">{content.icon}</div>
-      <p className="text-sm font-semibold text-black dark:text-white">
+      <p className="text-sm font-semibold leading-tight text-black dark:text-white">
         {content.label}
       </p>
       {content.sublabel && (
-        <p className="text-xs text-gray-500 dark:text-gray-400">
+        <p className="w-full break-words text-[11px] leading-tight text-gray-500 dark:text-gray-400">
           {content.sublabel}
         </p>
       )}
@@ -266,8 +304,8 @@ function IconCard({ content }: { content: PreviewContent }) {
 }
 
 /**
- * Wraps an anchor so hovering it reveals `preview`. Renders a plain <a> and
- * forwards everything, so it is a drop-in for the links already in the page.
+ * Wraps an anchor so hovering it opens `preview` above it. Renders a plain <a>
+ * and forwards everything, so it is a drop-in for the links already in place.
  */
 export function HoverPreviewLink({
   preview,
@@ -282,15 +320,13 @@ export function HoverPreviewLink({
     <a
       {...props}
       onMouseEnter={(e) => {
-        ctx?.show(preview);
+        ctx?.show(preview, e.currentTarget);
         onMouseEnter?.(e);
       }}
       onMouseLeave={(e) => {
         ctx?.hide();
         onMouseLeave?.(e);
       }}
-      // Keyboard users never trigger the card, but they must not get a stale
-      // one either if focus moves off a hovered link.
       onBlur={() => ctx?.hide()}
     >
       {children}
