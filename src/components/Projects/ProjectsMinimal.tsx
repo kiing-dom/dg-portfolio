@@ -4,25 +4,21 @@ import Section from "@/components/ui/Section";
 import { HoverPreviewLink } from "@/components/ui/HoverPreview";
 import { previews } from "@/components/ui/previews";
 
-const projects = [
+/** Also read by /llms.txt, so a new project is listed there the day it's added here. */
+export const projects = [
   {
     title: "luttie",
     link: "https://luttie.app",
-    preview: {
-      ...previews.luttie,
-      description:
-        "building a web alternative for color grading + LUT creation. 4.5k+ users currently",
-    },
+    description:
+      "building a web alternative for color grading + LUT creation. 4.5k+ users currently",
+    preview: previews.luttie,
     icon: "/assets/images/projects/luttie-icon.png",
   },
   {
     title: "tau",
     link: "https://trytau.app",
-    preview: {
-      ...previews.tau,
-      description:
-        "building the #1 timelapse app in the world",
-    },
+    description: "building the #1 timelapse app in the world",
+    preview: previews.tau,
     icon: "/assets/images/projects/tau-icon.png",
   },
 ];
@@ -37,17 +33,24 @@ const ProjectsMinimal = () => {
             href={project.link}
             target="_blank"
             rel="noopener noreferrer"
-            preview={project.preview}
-            aria-label={project.title}
+            preview={{ ...project.preview, description: project.description }}
             className="block rounded-[10px] transition-transform hover:-translate-y-0.5"
           >
             <Image
               src={project.icon}
-              alt={project.title}
+              alt=""
               width={80}
               height={80}
               className="h-10 w-10 rounded-[10px] ring-1 ring-black/10 dark:ring-white/15"
             />
+            {/*
+             * The hover bubble is aria-hidden and needs a mouse, so the name
+             * and description it shows are repeated here for screen readers,
+             * touch devices' accessibility trees, and crawlers.
+             */}
+            <span className="sr-only">
+              {project.title}: {project.description}
+            </span>
           </HoverPreviewLink>
         ))}
         <HoverPreviewLink

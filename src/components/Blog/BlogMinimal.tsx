@@ -1,57 +1,20 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ViewCounter } from "@/components/ViewCounter";
 import IndexRow from "@/components/ui/IndexRow";
 import Section from "@/components/ui/Section";
+import { getAllBlogPosts } from "@/lib/blog";
 
-interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  content: string;
-  published: boolean;
-}
-
+/**
+ * Rendered on the server so the post links are in the page's HTML. Fetching
+ * them from /api/blog after load left the homepage with no links to the posts
+ * for a crawler that doesn't run scripts.
+ */
 const BlogMinimal = () => {
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch("/api/blog");
-        const posts = await response.json();
-        setBlogPosts(posts);
-      } catch (error) {
-        console.error("Error fetching blog posts:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  // Already sorted newest first.
+  const recentPosts = getAllBlogPosts().slice(0, 3);
 
   let blogContent;
-  if (loading) {
-    blogContent = [1, 2, 3].map((i) => (
-      <div
-        key={i}
-        className="grid grid-cols-[2.5rem_1fr] gap-x-3 items-baseline py-2 animate-pulse"
-      >
-        <div className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-8" />
-        <div className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-3/4" />
-      </div>
-    ));
-  } else if (blogPosts.length > 0) {
-    const recentPosts = blogPosts
-      .toSorted(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      )
-      .slice(0, 3);
-
+  if (recentPosts.length > 0) {
     let lastYear = "";
     blogContent = recentPosts.map((post) => {
       const postYear = String(new Date(post.date).getFullYear());

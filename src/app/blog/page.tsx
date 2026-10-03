@@ -3,40 +3,14 @@ import { ViewCounter } from "@/components/ViewCounter";
 import IndexRow from "@/components/ui/IndexRow";
 import PageShell from "@/components/ui/PageShell";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/blog",
   title: "Blog",
-  description: "Read my thoughts on software engineering, solo development, building profitable products, and my journey from €0 → €10k MRR. Stories and updates from a software engineer.",
-  keywords: [
-    "Blog",
-    "Software Engineering Blog",
-    "Solo Developer Blog", 
-    "Tech Blog",
-    "Programming Blog",
-    "Startup Blog",
-    "MRR Journey",
-    "Product Development"
-  ],
-  openGraph: {
-    title: "Blog - Dominion Gbadamosi",
-    description: "Read my thoughts on software engineering, solo development, and building profitable products.",
-    url: "/blog",
-    images: [
-      {
-        url: "/assets/images/hero/gradphoto.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Dominion Gbadamosi Blog",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Blog - Dominion Gbadamosi",
-    description: "Read my thoughts on software engineering, solo development, and building profitable products.",
-    creator: "@_dngi",
-  },
-};
+  description:
+    "Writing by Dominion Gbadamosi on software engineering and building products solo: technical deep dives, build logs and opinion.",
+});
 
 export default async function BlogsPage() {
   const blogs = getAllBlogPosts();

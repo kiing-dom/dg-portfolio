@@ -4,50 +4,59 @@ import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { HoverPreviewProvider } from "@/components/ui/HoverPreview";
+import { DEFAULT_OG_IMAGE, PERSON_ID, ldJson } from "@/lib/seo";
+import {
+  EMAIL,
+  PROFILES,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+  TWITTER_HANDLE,
+} from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dominion-gbadamosi.xyz"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Dominion Gbadamosi - Software Engineer & Founder",
-    template: "%s | Dominion Gbadamosi"
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Documenting the journey from €0 → €10k MRR.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "Dominion Gbadamosi",
     "Software Engineer",
-    "Iwaju Labs",
-    "Solo Developer",
-    "brandalyze",
-    "Portfolio",
+    "Software Engineer Ireland",
+    "Full Stack Developer",
+    "Luttie",
+    "Tau",
     "dngi",
-    "dom"
+    "kiing dom",
   ],
-  authors: [{ name: "Dominion Gbadamosi", url: "https://dominion-gbadamosi.xyz" }],
-  creator: "Dominion Gbadamosi",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  /*
+   * No default `alternates.canonical` or `openGraph.url` here on purpose. Next
+   * inherits both down the whole tree, so a root default would point every
+   * page that forgot its own at the homepage. Pages set them through
+   * pageMetadata() in lib/seo.ts.
+   */
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://dominion-gbadamosi.xyz",
-    siteName: "Dominion Gbadamosi",
-    title: "Dominion Gbadamosi - Software Engineer & Founder",
-    description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Documenting the journey from €0 → €10k MRR.",
-    images: [
-      {
-        url: "/assets/images/hero/gradphoto.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Dominion Gbadamosi - Software Engineer",
-      },
-    ],
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dominion Gbadamosi - Software Engineer & Founder",
-    description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products.",
-    creator: "@_dngi",
-    images: ["/assets/images/hero/gradphoto.jpg"],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    creator: TWITTER_HANDLE,
+    images: [DEFAULT_OG_IMAGE.url],
   },
   robots: {
     index: true,
@@ -62,41 +71,55 @@ export const metadata: Metadata = {
   },
 };
 
+/** Referenced by `@id` from the pages that are about, or written by, this person. */
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": PERSON_ID,
+  name: SITE_NAME,
+  alternateName: ["dom", "dngi", "kiing dom"],
+  url: SITE_URL,
+  image: `${SITE_URL}/assets/images/hero/gradphoto.jpg`,
+  email: `mailto:${EMAIL}`,
+  sameAs: Object.values(PROFILES),
+  jobTitle: "Software Engineer",
+  address: { "@type": "PostalAddress", addressCountry: "IE" },
+  worksFor: {
+    "@type": "Organization",
+    name: "DNGI",
+    url: "https://github.com/iwaju-labs",
+  },
+  knowsAbout: [
+    "Software Engineering",
+    "Full Stack Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Java",
+    "Angular",
+    "Rust",
+    "Product Development",
+  ],
+  description: SITE_DESCRIPTION,
+};
+
+const websiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE_NAME,
+  description: SITE_DESCRIPTION,
+  inLanguage: "en",
+  publisher: { "@id": PERSON_ID },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Dominion Gbadamosi",
-    alternateName: ["Dom", "dngi", "Kiing Dom"],
-    url: "https://dominion-gbadamosi.xyz",
-    image: "https://dominion-gbadamosi.xyz/assets/images/hero/gradphoto.jpg",
-    sameAs: [
-      "https://github.com/dngi-dev",
-      "https://twitter.com/_dngi",
-      "https://youtube.com/@267dngi",
-      "https://linkedin.com/in/dominion-gbadamosi"
-    ],
-    jobTitle: "Software Engineer",
-    worksFor: {
-      "@type": "Organization",
-      name: "Iwaju Labs",
-      url: "https://github.com/iwaju-labs"
-    },
-    knowsAbout: [
-      "Software Engineering",
-      "Full Stack Development",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "JavaScript",
-      "Product Development"
-    ],
-    description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products."
-  };
-
+}>) {
   /*
    * Runs before first paint so the theme class is on <html> by the time
    * anything renders. Without it, ThemeProvider's useEffect applies the class
@@ -111,7 +134,11 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: ldJson(personLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: ldJson(websiteLd) }}
         />
       </head>
       <body className={inter.className}>

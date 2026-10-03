@@ -78,4 +78,14 @@ export const videos: VideoItem[] = [
 
 export const films: FilmItem[] = [];
 
-export const games: GameItem[] = [];
+export const games: GameItem[] = [
+  {
+    title: "elden ring",
+  },
+  {
+    title: "yakuza series"
+  },
+  {
+    title: "new super mario bros"
+  }
+];

@@ -17,7 +17,7 @@ export const experiences: Experience[] = [
   // },
   {
     position: "Founder/Software Engineer",
-    company: "Iwaju Labs",
+    company: "DNGI",
     duration: "Nov 2025 - Present",
     description: "hub for all the personal project I'm shipping"
   },

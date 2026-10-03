@@ -1,6 +1,15 @@
 import PageShell from "@/components/ui/PageShell";
 import RecommendationList from "@/components/Recommendations/RecommendationList";
 import { games } from "@/data/recommendations";
+import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = pageMetadata({
+  path: "/recommendations/games",
+  title: "Recommended Games",
+  description:
+    "Games Dominion Gbadamosi has played and recommends.",
+});
 
 export default function GamesPage() {
   return (

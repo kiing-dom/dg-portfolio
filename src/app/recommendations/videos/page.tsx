@@ -1,6 +1,15 @@
 import PageShell from "@/components/ui/PageShell";
 import RecommendationVideos from "@/components/Recommendations/RecommendationVideos";
 import { videos } from "@/data/recommendations";
+import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = pageMetadata({
+  path: "/recommendations/videos",
+  title: "Recommended Videos",
+  description:
+    "YouTube videos Dominion Gbadamosi has watched and recommends.",
+});
 
 export default function VideosPage() {
   return (

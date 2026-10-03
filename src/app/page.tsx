@@ -6,28 +6,32 @@ import Footer from "@/components/ui/FooterMinimal";
 import PageShell from "@/components/ui/PageShell";
 import type { Metadata } from "next";
 import ReadingList from "@/components/ReadingList/ReadingList";
+import { PERSON_ID, canonicalFor, ldJson, pageMetadata } from "@/lib/seo";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Home",
-  description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog documenting the journey from â‚¬0 â†’ â‚¬10k MRR.",
-  openGraph: {
-    title: "Dominion Gbadamosi - Software Engineer & Founder",
-    description: "Software Engineer, Founder at Iwaju Labs, and solo developer building profitable products. Explore my projects, experience, and blog.",
-    url: "/",
-    images: [
-      {
-        url: "/assets/images/hero/gradphoto.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Dominion Gbadamosi Portfolio",
-      },
-    ],
-  },
+export const metadata: Metadata = pageMetadata({
+  path: "/",
+  title: SITE_TITLE,
+  absoluteTitle: true,
+  description: SITE_DESCRIPTION,
+});
+
+/** Tells search engines this page is the profile of the Person in the layout. */
+const profileLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: canonicalFor("/"),
+  name: SITE_TITLE,
+  mainEntity: { "@id": PERSON_ID },
 };
 
 export default function Home() {
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: ldJson(profileLd) }}
+      />
       <header id="hero" className="mb-8">
         <h1 className="text-sm font-semibold text-black dark:text-white">
           Dominion Gbadamosi

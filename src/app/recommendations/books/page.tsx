@@ -1,6 +1,15 @@
 import PageShell from "@/components/ui/PageShell";
 import RecommendationList from "@/components/Recommendations/RecommendationList";
 import { books } from "@/data/recommendations";
+import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = pageMetadata({
+  path: "/recommendations/books",
+  title: "Recommended Books",
+  description:
+    "Books Dominion Gbadamosi has read and recommends.",
+});
 
 export default function BooksPage() {
   return (

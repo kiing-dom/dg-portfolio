@@ -1,6 +1,15 @@
 import PageShell from "@/components/ui/PageShell";
 import RecommendationList from "@/components/Recommendations/RecommendationList";
 import { films } from "@/data/recommendations";
+import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = pageMetadata({
+  path: "/recommendations/films",
+  title: "Recommended Films",
+  description:
+    "Films Dominion Gbadamosi has watched and recommends.",
+});
 
 export default function FilmsPage() {
   return (

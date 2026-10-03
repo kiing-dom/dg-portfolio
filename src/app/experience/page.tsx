@@ -1,36 +1,14 @@
 import PageShell from "@/components/ui/PageShell";
 import { experiences } from "@/components/Experience/ExperienceMinimal";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/experience",
   title: "Experience",
   description:
-    "Full work history of Dominion Gbadamosi — Software Engineer, AI Data Analyst, Co-Op at General Motors, and more.",
-  openGraph: {
-    title: "Experience - Dominion Gbadamosi",
-    description:
-      "Full work history of Dominion Gbadamosi — Software Engineer, AI Data Analyst, Co-Op at General Motors, and more.",
-    url: "https://dominion-gbadamosi.xyz/experience",
-    images: [
-      {
-        url: "/assets/images/hero/gradphoto.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Dominion Gbadamosi - Experience",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Experience - Dominion Gbadamosi",
-    description:
-      "Full work history of Dominion Gbadamosi — Software Engineer, AI Data Analyst, Co-Op at General Motors, and more.",
-    creator: "@_dngi",
-  },
-  alternates: {
-    canonical: "https://dominion-gbadamosi.xyz/experience",
-  },
-};
+    "Full work history of Dominion Gbadamosi: Software Engineer, AI Data Analyst, Co-Op at General Motors, and more.",
+});
 
 export default function ExperiencePage() {
   return (

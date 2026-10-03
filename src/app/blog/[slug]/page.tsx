@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getBlogPost, getAllBlogPosts } from "@/lib/blog";
+import { getBlogPost, getAllBlogPosts, type BlogPost } from "@/lib/blog";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import rehypeKatex from "rehype-katex";
@@ -7,6 +7,15 @@ import remarkMath from "remark-math";
 import Link from "next/link";
 import PageShell from "@/components/ui/PageShell";
 import { ViewCounter } from "@/components/ViewCounter";
+import {
+  PERSON_ID,
+  breadcrumbLd,
+  canonicalFor,
+  ldJson,
+  ogImageFor,
+} from "@/lib/seo";
+import { SITE_NAME, SITE_URL, TWITTER_HANDLE } from "@/lib/site";
+import type { Metadata } from "next";
 import "katex/dist/katex.min.css";
 
 interface BlogPostPageProps {
@@ -23,55 +32,58 @@ export async function generateStaticParams() {
   }));
 }
 
+/** The post's own social card: its title and description on the shared design. */
+const postImage = (post: BlogPost) =>
+  ogImageFor({
+    eyebrow: "blog",
+    title: post.title,
+    description: post.description || undefined,
+  });
+
 // Generate metadata for SEO
-export async function generateMetadata({ params }: BlogPostPageProps) {
+export async function generateMetadata({
+  params,
+}: BlogPostPageProps): Promise<Metadata> {
   const post = getBlogPost(params.slug);
 
-  if (!post) {
+  // An unpublished post 404s below, so it must not be indexable either.
+  if (!post || !post.published) {
     return {
       title: "Post Not Found",
       description: "The requested blog post could not be found.",
+      robots: { index: false, follow: false },
     };
   }
 
+  const url = canonicalFor(`/blog/${post.slug}`);
+  // A post with no description of its own falls back to its title.
+  const description = post.description || post.title;
+  const publishedTime = new Date(post.date).toISOString();
+  const image = postImage(post);
+
   return {
     title: post.title,
-    description: post.description,
-    keywords: [
-      "Dominion Gbadamosi",
-      "Software Engineer",
-      "Blog",
-      "Solo Developer",
-      "Tech Blog",
-      "Programming",
-      "Development"
-    ],
-    authors: [{ name: "Dominion Gbadamosi" }],
+    description,
+    authors: [{ name: SITE_NAME, url: SITE_URL }],
+    alternates: { canonical: url },
     openGraph: {
-      title: post.title,
-      description: post.description,
       type: "article",
-      publishedTime: post.date,
-      authors: ["Dominion Gbadamosi"],
-      url: `https://dominion-gbadamosi.xyz/blog/${post.slug}`,
-      images: [
-        {
-          url: "/assets/images/hero/gradphoto.jpg",
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
+      locale: "en_US",
+      siteName: SITE_NAME,
+      url,
+      title: post.title,
+      description,
+      publishedTime,
+      modifiedTime: publishedTime,
+      authors: [SITE_URL],
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title: post.title,
-      description: post.description,
-      creator: "@_dngi",
-      images: ["/assets/images/hero/gradphoto.jpg"],
-    },
-    alternates: {
-      canonical: `https://dominion-gbadamosi.xyz/blog/${post.slug}`,
+      description,
+      creator: TWITTER_HANDLE,
+      images: [image.url],
     },
   };
 }
@@ -82,8 +94,41 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post || !post.published) {
     notFound();
   }
+
+  const path = `/blog/${post.slug}`;
+  const isoDate = new Date(post.date).toISOString();
+
+  const articleLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.description || post.title,
+    image: `${SITE_URL}${postImage(post).url}`,
+    datePublished: isoDate,
+    dateModified: isoDate,
+    url: canonicalFor(path),
+    inLanguage: "en",
+    author: { "@id": PERSON_ID },
+    publisher: { "@id": PERSON_ID },
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalFor(path) },
+  };
+
+  const crumbsLd = breadcrumbLd([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path },
+  ]);
+
   return (
     <PageShell backHref="/blog" backLabel="back to blog">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: ldJson(articleLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: ldJson(crumbsLd) }}
+      />
       <header className="mb-8">
         <h1 className="text-sm font-semibold text-black dark:text-white">
           {post.title}

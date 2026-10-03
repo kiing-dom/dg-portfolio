@@ -10,6 +10,15 @@ import {
   films,
   games,
 } from "@/data/recommendations";
+import { pageMetadata } from "@/lib/seo";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = pageMetadata({
+  path: "/recommendations",
+  title: "Recommendations",
+  description:
+    "Books, articles, papers, videos, films and games Dominion Gbadamosi has read, watched or played and thinks are worth your time.",
+});
 
 export default function ReadingListPage() {
   return (
