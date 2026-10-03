@@ -35,12 +35,18 @@ export interface PreviewContent {
   label?: string;
   /** Muted second line, e.g. the address itself. */
   sublabel?: string;
+  /** Image previews: frame width / height. Defaults to 16:10. */
+  ratio?: number;
+  /** Image previews: optional caption under the image. */
+  description?: string;
 }
 
-/** Screenshots keep a 16:10 frame; icon cards are square. */
+/** Screenshots default to a 16:10 frame; icon cards are square. */
 const IMAGE_W = 260;
-const IMAGE_H = 163;
+const IMAGE_RATIO = 16 / 10;
 const ICON_SIZE = 168;
+/** Tallest a caption gets: three clamped lines plus padding. */
+const CAPTION_MAX_H = 68;
 
 /** Gap between the tail tip and the top of the link. */
 const TAIL_GAP = 10;
@@ -51,13 +57,18 @@ const EDGE_PAD = 12;
 const sizeOf = (c: PreviewContent) =>
   c.kind === "icon"
     ? { w: ICON_SIZE, h: ICON_SIZE }
-    : { w: IMAGE_W, h: IMAGE_H };
+    : { w: IMAGE_W, h: Math.round(IMAGE_W / (c.ratio ?? IMAGE_RATIO)) };
 
 /** Where the bubble sits, resolved from the link's rect at hover time. */
 interface Anchor {
-  /** Bubble's top-left, in viewport coords. */
+  /** Bubble's left edge, in viewport coords. */
   left: number;
-  top: number;
+  /**
+   * The edge facing the link: the bubble's bottom normally, its top when
+   * flipped. Pinning that edge keeps the tail on the link whatever height the
+   * caption wraps to.
+   */
+  edge: number;
   /** Tail's horizontal centre, relative to the bubble's left edge. */
   tailX: number;
   /** Tail below the bubble (normal) or above it (bubble flipped under). */
@@ -118,9 +129,9 @@ function anchorTo(el: HTMLElement, content: PreviewContent): Anchor {
   );
 
   // Prefer above; drop below only when there isn't room up there.
-  const above = r.top - h - TAIL_GAP;
-  const flipped = above < EDGE_PAD;
-  const top = flipped ? r.bottom + TAIL_GAP : above;
+  const maxH = h + (content.description ? CAPTION_MAX_H : 0);
+  const flipped = r.top - maxH - TAIL_GAP < EDGE_PAD;
+  const edge = flipped ? r.bottom + TAIL_GAP : r.top - TAIL_GAP;
 
   /*
    * The bubble may have been clamped away from the link's centre, so the tail
@@ -131,7 +142,7 @@ function anchorTo(el: HTMLElement, content: PreviewContent): Anchor {
     Math.min(centre - left, w - TAIL_W)
   );
 
-  return { left, top, tailX, flipped };
+  return { left, edge, tailX, flipped };
 }
 
 export function HoverPreviewProvider({
@@ -200,7 +211,9 @@ function PreviewBubble({
             key={content.src ?? content.label ?? "preview"}
             style={{
               left: anchor.left,
-              top: anchor.top,
+              ...(anchor.flipped
+                ? { top: anchor.edge }
+                : { bottom: `calc(100% - ${anchor.edge}px)` }),
               width: size.w,
             }}
             className="absolute"
@@ -219,8 +232,8 @@ function PreviewBubble({
                   <Image
                     src={content.src}
                     alt=""
-                    width={IMAGE_W * 2}
-                    height={IMAGE_H * 2}
+                    width={size.w * 2}
+                    height={size.h * 2}
                     // Top-anchored so the card shows the masthead.
                     className="block w-full object-cover object-top"
                     style={{ height: size.h }}
@@ -228,6 +241,11 @@ function PreviewBubble({
                   />
                 ) : (
                   <IconCard content={content} size={size.h} />
+                )}
+                {content.kind === "image" && content.description && (
+                  <p className="line-clamp-3 border-t border-black/10 px-3 py-2.5 text-xs leading-4 text-gray-600 dark:border-white/15 dark:text-gray-400">
+                    {content.description}
+                  </p>
                 )}
               </div>
               <Tail

@@ -1,72 +1,68 @@
 import React from "react";
-import IndexRow from "@/components/ui/IndexRow";
+import Image from "next/image";
 import Section from "@/components/ui/Section";
+import { HoverPreviewLink } from "@/components/ui/HoverPreview";
 import { previews } from "@/components/ui/previews";
 
 const projects = [
   {
     title: "luttie",
-    description:
-      "building a web alternative for color grading + LUT creation. 3k+ users currently",
     link: "https://luttie.app",
-    year: "2026",
-    category: "Product",
-    preview: previews.luttie,
+    preview: {
+      ...previews.luttie,
+      description:
+        "building a web alternative for color grading + LUT creation. 4.5k+ users currently",
+    },
+    icon: "/assets/images/projects/luttie-icon.png",
   },
   {
     title: "tau",
-    description:
-      "building the #1 timelapse app in the world. currently at ~$40 revenue",
     link: "https://trytau.app",
-    year: "2026",
-    category: "Product",
-    preview: previews.tau,
-  },
-  {
-    title: "fuzc",
-    description: "a fuzzy finder for comments written in rust",
-    link: "https://github.com/kiing-dom/fuzc",
-    year: "2025",
-    category: "Personal",
-    preview: previews.fuzc,
+    preview: {
+      ...previews.tau,
+      description:
+        "building the #1 timelapse app in the world",
+    },
+    icon: "/assets/images/projects/tau-icon.png",
   },
 ];
 
 const ProjectsMinimal = () => {
-  let lastYear = "";
-
   return (
     <Section id="projects" title="projects.">
-      <div>
-        {projects.map((project) => {
-          const year = project.year === lastYear ? undefined : project.year;
-          lastYear = project.year;
-
-          return (
-            <IndexRow
-              key={project.title}
-              year={year}
-              title={project.title}
-              detail={project.description}
-              meta={project.category}
-              href={project.link}
-              preview={project.preview}
+      <div className="flex flex-wrap items-center gap-3">
+        {projects.map((project) => (
+          <HoverPreviewLink
+            key={project.title}
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            preview={project.preview}
+            aria-label={project.title}
+            className="block rounded-[10px] transition-transform hover:-translate-y-0.5"
+          >
+            <Image
+              src={project.icon}
+              alt={project.title}
+              width={80}
+              height={80}
+              className="h-10 w-10 rounded-[10px] ring-1 ring-black/10 dark:ring-white/15"
             />
-          );
-        })}
-      </div>
-      <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
-        more projects and code snippets on{" "}
-        <a
+          </HoverPreviewLink>
+        ))}
+        <HoverPreviewLink
           href="https://github.com/kiing-dom"
           target="_blank"
           rel="noopener noreferrer"
-          className="link font-semibold"
+          preview={previews.github}
+          className="inline-flex h-10 items-center gap-2 rounded-[10px] border border-gray-200 px-3 text-sm text-black transition-colors hover:border-link hover:text-link dark:border-gray-800 dark:text-white"
         >
-          github
-        </a>
-        {"."}
-      </p>
+          <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden>
+            <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2.1c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.4-5.27 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" />
+          </svg>
+          view more on github
+        </HoverPreviewLink>
+      </div>
     </Section>
   );
 };

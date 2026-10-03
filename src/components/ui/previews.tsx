@@ -17,6 +17,13 @@ const shot = (name: string): PreviewContent => ({
   src: `/assets/images/previews/${name}.png`,
 });
 
+/** A site's own og:image, saved alongside the screenshots at 1200x628. */
+const og = (file: string): PreviewContent => ({
+  kind: "image",
+  src: `/assets/images/previews/${file}`,
+  ratio: 1200 / 628,
+});
+
 const MailIcon = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}>
     <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
@@ -81,7 +88,6 @@ export const previews = {
     sublabel: "biblegateway - niv",
   },
   github: shot("github"),
-  luttie: shot("luttie"),
-  tau: shot("tau"),
-  fuzc: shot("fuzc"),
+  luttie: og("luttie-og.png"),
+  tau: og("tau-og.jpg"),
 } satisfies Record<string, PreviewContent>;
