@@ -11,11 +11,21 @@ export const SITE_NAME = "Dominion Gbadamosi";
 export const SITE_TITLE = "Dominion Gbadamosi - Software Engineer & Founder";
 
 export const SITE_DESCRIPTION =
-  "Dominion Gbadamosi is a software engineer based in Ireland, building Luttie (browser color grading) and Tau (timelapse recorder). Previously at General Motors.";
+  "Dominion Gbadamosi is a software engineer based in Ireland, building Luttie (browser color grading) and Tau (timelapse recorder). Open to backend and full stack roles.";
 
 export const EMAIL = "dom1gbadamosi@gmail.com";
 
 export const TWITTER_HANDLE = "@_dngi";
+
+/**
+ * A copy of the resume kept in /public. The source of truth is the Google Drive
+ * file; when that changes, download it again over this one.
+ *
+ * It contains a phone number, so next.config.mjs serves it with a noindex
+ * header and it is deliberately left out of the sitemap and llms.txt. If this
+ * path changes, change it there too.
+ */
+export const RESUME_PATH = "/assets/documents/dominion-gbadamosi-resume.pdf";
 
 /** Profiles that are the same person, for `sameAs` and llms.txt. */
 export const PROFILES = {

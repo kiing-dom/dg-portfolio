@@ -1,9 +1,10 @@
 import React from "react";
+import { RESUME_PATH } from "@/lib/site";
 
 const links = [
   {
     label: "resume",
-    href: "https://drive.google.com/file/d/1w2rVPxk8DvZrMlr6CdMwgBlkUhPE4qsb/view",
+    href: RESUME_PATH,
   },
   { label: "github", href: "https://www.github.com/kiing-dom" },
   { label: "twitter", href: "https://www.twitter.com/_dngi" },

@@ -19,7 +19,7 @@ export function GET() {
 
   const body = `# Dominion Gbadamosi
 
-> Software engineer based in Ireland. Founder of DNGI, building Luttie (browser color grading) and Tau (timelapse recorder). Also known as Dom, dngi and Kiing Dom.
+> Software engineer based in Ireland. Founder of DNGI, building Luttie (browser color grading) and Tau (timelapse recorder). Currently open to backend and full stack roles. Also known as Dom, dngi and Kiing Dom.
 
 ## Projects
 
@@ -53,8 +53,7 @@ ${posts
 ## Key pages
 
 - [Home](${SITE_URL}/): overview, projects and recent posts
-- [Experience](${SITE_URL}/experience): full work history
-- [Blog](${SITE_URL}/blog): every post
+- [Experience](${SITE_URL}/experience): full work history- [Blog](${SITE_URL}/blog): every post
 - [Recommendations](${SITE_URL}/recommendations): books, articles, papers, videos, films and games
 
 ## Contact

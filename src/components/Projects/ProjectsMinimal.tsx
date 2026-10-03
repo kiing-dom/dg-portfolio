@@ -26,7 +26,8 @@ export const projects = [
 const ProjectsMinimal = () => {
   return (
     <Section id="projects" title="projects.">
-      <div className="flex flex-wrap items-center gap-3">
+      {/* Touch devices get a stacked list instead of the icon row; see below. */}
+      <div className="flex flex-wrap items-center gap-3 [@media(hover:none)]:flex-col [@media(hover:none)]:items-start">
         {projects.map((project) => (
           <HoverPreviewLink
             key={project.title}
@@ -34,22 +35,27 @@ const ProjectsMinimal = () => {
             target="_blank"
             rel="noopener noreferrer"
             preview={{ ...project.preview, description: project.description }}
-            className="block rounded-[10px] transition-transform hover:-translate-y-0.5"
+            className="flex items-center gap-3 rounded-[10px] transition-transform hover:-translate-y-0.5"
           >
             <Image
               src={project.icon}
               alt=""
               width={80}
               height={80}
-              className="h-10 w-10 rounded-[10px] ring-1 ring-black/10 dark:ring-white/15"
+              className="h-10 w-10 shrink-0 rounded-[10px] ring-1 ring-black/10 dark:ring-white/15"
             />
             {/*
              * The hover bubble is aria-hidden and needs a mouse, so the name
-             * and description it shows are repeated here for screen readers,
-             * touch devices' accessibility trees, and crawlers.
+             * and description it shows are repeated here: hidden visually where
+             * hovering works (screen readers and crawlers still get it), and
+             * shown beside the icon on touch devices, which can't hover.
              */}
-            <span className="sr-only">
-              {project.title}: {project.description}
+            <span className="sr-only text-sm leading-snug [@media(hover:none)]:not-sr-only">
+              <span className="text-black dark:text-white">{project.title}</span>
+              <span className="text-gray-500 dark:text-gray-400">
+                {" "}
+                - {project.description}
+              </span>
             </span>
           </HoverPreviewLink>
         ))}

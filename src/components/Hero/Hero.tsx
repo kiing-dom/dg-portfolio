@@ -23,7 +23,10 @@ const Hero: React.FC = () => {
       </p>
 
       <p>
-        i&apos;m a software engineer based Ireland. i just really enjoy building software so whenever i have an idea for a project i go all in.
+        i&apos;m a software engineer based in Ireland. i just really enjoy building software so whenever i have an idea for a project i go all in.
+      </p>
+      <p>
+        i&apos;m currently looking for backend and full stack roles.
       </p>
       <p>
         if you want to reach me, please do it through{" "}
