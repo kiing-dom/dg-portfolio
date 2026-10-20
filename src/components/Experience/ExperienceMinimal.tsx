@@ -16,6 +16,12 @@ export const experiences: Experience[] = [
   //   duration: "Feb 2026 - Present",
   // },
   {
+    position: "Senior Software Engineer",
+    company: "VISA",
+    duration: "Nov 2026 - Present",
+    description: "idk yet"
+  },
+  {
     position: "Founder/Software Engineer",
     company: "DNGI",
     duration: "Nov 2025 - Present",
@@ -24,7 +30,7 @@ export const experiences: Experience[] = [
   {
     position: "Software Engineer",
     company: "BG Collections",
-    duration: "Jul 2025 - Present",
+    duration: "Jul 2025 - Jul 2026",
     description: "developed scalable ecommerce site and admin management system for small business."
   },
   {
